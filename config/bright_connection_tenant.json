@@ -1,0 +1,121 @@
+{
+  "tenant_id": "tenant_bright_connection_001",
+  "tenant_name": "Bright Connection",
+  "tenant_type": "enterprise",
+  "onboarded_at": "2025-01-15T00:00:00Z",
+  "schema_version": "1.0",
+
+  "modules": [
+    "dealer_management",
+    "order_management",
+    "inventory_management",
+    "collections",
+    "field_operations",
+    "product_catalogue",
+    "schemes",
+    "insightflow"
+  ],
+
+  "roles": [
+    "admin",
+    "sales_manager",
+    "salesperson",
+    "distributor",
+    "finance_manager",
+    "viewer"
+  ],
+
+  "policies": [
+    "multi_tenant_isolation",
+    "role_based_access",
+    "data_retention_90_days",
+    "audit_logging_enabled"
+  ],
+
+  "connectors": [
+    {
+      "connector_id": "biz_analyst",
+      "enabled": true,
+      "auth": {
+        "api_key": "<biz_analyst_api_key>",
+        "base_url": "https://api.bizanalyst.in/v1"
+      },
+      "sync_schedule": "0 */6 * * *",
+      "entity_types": ["order", "collection", "outstanding"]
+    },
+    {
+      "connector_id": "tally",
+      "enabled": false,
+      "note": "Tally unavailable — contract defined, activate when Tally gateway is live",
+      "auth": {
+        "tally_host": "localhost",
+        "tally_port": 9000
+      },
+      "sync_schedule": "0 2 * * *",
+      "entity_types": ["ledger", "invoice", "outstanding"]
+    },
+    {
+      "connector_id": "bright_crm",
+      "enabled": true,
+      "auth": {
+        "oauth_token": "<bright_crm_oauth_token>"
+      },
+      "sync_schedule": "*/30 * * * *",
+      "entity_types": ["visit", "beat_plan", "route_plan", "display_compliance"]
+    },
+    {
+      "connector_id": "bright_dms",
+      "enabled": true,
+      "auth": {
+        "api_key": "<bright_dms_api_key>"
+      },
+      "sync_schedule": "0 1 * * *",
+      "entity_types": ["dealer", "scheme", "product_catalogue"]
+    },
+    {
+      "connector_id": "bright_inventory",
+      "enabled": true,
+      "auth": {
+        "api_key": "<bright_inventory_api_key>"
+      },
+      "sync_schedule": "0 */4 * * *",
+      "entity_types": ["inventory", "damaged_goods"]
+    },
+    {
+      "connector_id": "bright_orders",
+      "enabled": true,
+      "auth": {
+        "api_key": "<bright_orders_api_key>"
+      },
+      "sync_schedule": "*/15 * * * *",
+      "entity_types": ["order", "invoice", "payment_receipt"]
+    },
+    {
+      "connector_id": "bright_sales",
+      "enabled": true,
+      "auth": {
+        "api_key": "<bright_sales_api_key>"
+      },
+      "sync_schedule": "0 0 * * *",
+      "entity_types": ["order"]
+    },
+    {
+      "connector_id": "bright_collections",
+      "enabled": true,
+      "auth": {
+        "api_key": "<bright_collections_api_key>"
+      },
+      "sync_schedule": "*/30 * * * *",
+      "entity_types": ["collection", "outstanding"]
+    },
+    {
+      "connector_id": "bright_dealer",
+      "enabled": true,
+      "auth": {
+        "api_key": "<bright_dealer_api_key>"
+      },
+      "sync_schedule": "0 1 * * *",
+      "entity_types": ["dealer"]
+    }
+  ]
+}

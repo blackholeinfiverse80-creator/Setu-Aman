@@ -1,0 +1,1020 @@
+{
+  "validation_id": "val_20260811_153831",
+  "tenant_id": "tenant_bright_connection_001",
+  "started_at": "2026-08-11T15:38:31.425599+00:00",
+  "checks": [
+    {
+      "check": "Register biz_analyst",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "Register tally",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "Register bright_crm",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "Register bright_dms",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "Register bright_inventory",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "Register bright_orders",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "Register bright_sales",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "Register bright_collections",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "Register bright_dealer",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "Registry lists all connectors",
+      "status": "PASS",
+      "detail": "9 registered"
+    },
+    {
+      "check": "Manifest available: biz_analyst",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "Manifest available: bright_crm",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "Manifest available: bright_dms",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "Manifest available: bright_inventory",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "Manifest available: bright_orders",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "Manifest available: bright_sales",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "Manifest available: bright_collections",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "Manifest available: bright_dealer",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "Pipeline instantiated",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "Sync biz_analyst",
+      "status": "PASS",
+      "detail": "3 ingested, 0 failed"
+    },
+    {
+      "check": "Sync bright_crm",
+      "status": "PASS",
+      "detail": "4 ingested, 0 failed"
+    },
+    {
+      "check": "Sync bright_dms",
+      "status": "PASS",
+      "detail": "3 ingested, 0 failed"
+    },
+    {
+      "check": "Sync bright_inventory",
+      "status": "PASS",
+      "detail": "2 ingested, 0 failed"
+    },
+    {
+      "check": "Sync bright_orders",
+      "status": "PASS",
+      "detail": "3 ingested, 0 failed"
+    },
+    {
+      "check": "Sync bright_sales",
+      "status": "PASS",
+      "detail": "1 ingested, 0 failed"
+    },
+    {
+      "check": "Sync bright_collections",
+      "status": "PASS",
+      "detail": "2 ingested, 0 failed"
+    },
+    {
+      "check": "Sync bright_dealer",
+      "status": "PASS",
+      "detail": "1 ingested, 0 failed"
+    },
+    {
+      "check": "MasterDB has records",
+      "status": "PASS",
+      "detail": "total=19"
+    },
+    {
+      "check": "MasterDB tenant isolated",
+      "status": "PASS",
+      "detail": "tenant_bright_connection_001"
+    },
+    {
+      "check": "All MasterDB records are MDURecord",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "InsightFlow dispatched records",
+      "status": "PASS",
+      "detail": "19 dispatches"
+    },
+    {
+      "check": "Capability handlers received records",
+      "status": "PASS",
+      "detail": "6 records received"
+    },
+    {
+      "check": "Replay engine has records",
+      "status": "PASS",
+      "detail": "19 registered"
+    },
+    {
+      "check": "Replay returns all records",
+      "status": "PASS",
+      "detail": "19 replayed"
+    },
+    {
+      "check": "Replay is deterministic (same hash)",
+      "status": "PASS",
+      "detail": "hash=b7e7570e0dbc9c0a..."
+    },
+    {
+      "check": "Other tenant records isolated",
+      "status": "PASS",
+      "detail": "tenant_bright=19, tenant_other=1"
+    },
+    {
+      "check": "ConnectorPipeline has no connector imports",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "MasterDB has no connector imports",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "InsightFlow has no connector imports",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "ReplayEngine has no connector imports",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "Tenant config file exists",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "Tenant config has connectors",
+      "status": "PASS",
+      "detail": "9 connectors configured"
+    },
+    {
+      "check": "Tenant config has modules",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "Tenant config has roles",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "Tenant config has policies",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "pipeline_results": [
+    {
+      "trace_id": "trace_tenant_bright_connection_001_16092b5db343",
+      "tenant_id": "tenant_bright_connection_001",
+      "connector_id": "biz_analyst",
+      "records_ingested": 3,
+      "records_failed": 0,
+      "events": [
+        {
+          "event_id": "evt_312094fbf1b948e5",
+          "event_type": "sync_started",
+          "connector_id": "biz_analyst",
+          "tenant_id": "tenant_bright_connection_001",
+          "trace_id": "trace_tenant_bright_connection_001_16092b5db343",
+          "timestamp": "2026-08-11T15:38:31.427533+00:00",
+          "payload": {
+            "entity_types": [
+              "order",
+              "collection",
+              "outstanding"
+            ]
+          },
+          "schema_version": "1.0"
+        },
+        {
+          "event_id": "evt_45bbc312414c44ff",
+          "event_type": "data_received",
+          "connector_id": "biz_analyst",
+          "tenant_id": "tenant_bright_connection_001",
+          "trace_id": "trace_tenant_bright_connection_001_16092b5db343",
+          "timestamp": "2026-08-11T15:38:31.427729+00:00",
+          "payload": {
+            "entity_type": "order",
+            "count": 1
+          },
+          "schema_version": "1.0"
+        },
+        {
+          "event_id": "evt_c15c7b1a936649b6",
+          "event_type": "data_received",
+          "connector_id": "biz_analyst",
+          "tenant_id": "tenant_bright_connection_001",
+          "trace_id": "trace_tenant_bright_connection_001_16092b5db343",
+          "timestamp": "2026-08-11T15:38:31.427778+00:00",
+          "payload": {
+            "entity_type": "collection",
+            "count": 1
+          },
+          "schema_version": "1.0"
+        },
+        {
+          "event_id": "evt_af9829199a024cb4",
+          "event_type": "data_received",
+          "connector_id": "biz_analyst",
+          "tenant_id": "tenant_bright_connection_001",
+          "trace_id": "trace_tenant_bright_connection_001_16092b5db343",
+          "timestamp": "2026-08-11T15:38:31.427813+00:00",
+          "payload": {
+            "entity_type": "outstanding",
+            "count": 1
+          },
+          "schema_version": "1.0"
+        },
+        {
+          "event_id": "evt_2e9fd2cccb59473d",
+          "event_type": "sync_completed",
+          "connector_id": "biz_analyst",
+          "tenant_id": "tenant_bright_connection_001",
+          "trace_id": "trace_tenant_bright_connection_001_16092b5db343",
+          "timestamp": "2026-08-11T15:38:31.427827+00:00",
+          "payload": {
+            "records_ingested": 3,
+            "records_failed": 0
+          },
+          "schema_version": "1.0"
+        }
+      ],
+      "errors": [],
+      "replay_keys": [
+        "fca781fac9e35ea3fd8f697b49db870f",
+        "db38a1d51fae5777fee45bb329fe03c7",
+        "8fd2ae101f9490c8bd473ba70c876fdb"
+      ],
+      "completed_at": "2026-08-11T15:38:31.427817+00:00"
+    },
+    {
+      "trace_id": "trace_tenant_bright_connection_001_eed7d3b44abc",
+      "tenant_id": "tenant_bright_connection_001",
+      "connector_id": "bright_crm",
+      "records_ingested": 4,
+      "records_failed": 0,
+      "events": [
+        {
+          "event_id": "evt_b4f4603be9294f7f",
+          "event_type": "sync_started",
+          "connector_id": "bright_crm",
+          "tenant_id": "tenant_bright_connection_001",
+          "trace_id": "trace_tenant_bright_connection_001_eed7d3b44abc",
+          "timestamp": "2026-08-11T15:38:31.427860+00:00",
+          "payload": {
+            "entity_types": [
+              "visit",
+              "beat_plan",
+              "route_plan",
+              "display_compliance"
+            ]
+          },
+          "schema_version": "1.0"
+        },
+        {
+          "event_id": "evt_abcc6d81384449fa",
+          "event_type": "data_received",
+          "connector_id": "bright_crm",
+          "tenant_id": "tenant_bright_connection_001",
+          "trace_id": "trace_tenant_bright_connection_001_eed7d3b44abc",
+          "timestamp": "2026-08-11T15:38:31.427905+00:00",
+          "payload": {
+            "entity_type": "visit",
+            "count": 1
+          },
+          "schema_version": "1.0"
+        },
+        {
+          "event_id": "evt_8600786a1a5e48d6",
+          "event_type": "data_received",
+          "connector_id": "bright_crm",
+          "tenant_id": "tenant_bright_connection_001",
+          "trace_id": "trace_tenant_bright_connection_001_eed7d3b44abc",
+          "timestamp": "2026-08-11T15:38:31.427942+00:00",
+          "payload": {
+            "entity_type": "beat_plan",
+            "count": 1
+          },
+          "schema_version": "1.0"
+        },
+        {
+          "event_id": "evt_adea6b9d7da445b1",
+          "event_type": "data_received",
+          "connector_id": "bright_crm",
+          "tenant_id": "tenant_bright_connection_001",
+          "trace_id": "trace_tenant_bright_connection_001_eed7d3b44abc",
+          "timestamp": "2026-08-11T15:38:31.427975+00:00",
+          "payload": {
+            "entity_type": "route_plan",
+            "count": 1
+          },
+          "schema_version": "1.0"
+        },
+        {
+          "event_id": "evt_755702b7c22645b6",
+          "event_type": "data_received",
+          "connector_id": "bright_crm",
+          "tenant_id": "tenant_bright_connection_001",
+          "trace_id": "trace_tenant_bright_connection_001_eed7d3b44abc",
+          "timestamp": "2026-08-11T15:38:31.428009+00:00",
+          "payload": {
+            "entity_type": "display_compliance",
+            "count": 1
+          },
+          "schema_version": "1.0"
+        },
+        {
+          "event_id": "evt_36927c29e57f425a",
+          "event_type": "sync_completed",
+          "connector_id": "bright_crm",
+          "tenant_id": "tenant_bright_connection_001",
+          "trace_id": "trace_tenant_bright_connection_001_eed7d3b44abc",
+          "timestamp": "2026-08-11T15:38:31.428023+00:00",
+          "payload": {
+            "records_ingested": 4,
+            "records_failed": 0
+          },
+          "schema_version": "1.0"
+        }
+      ],
+      "errors": [],
+      "replay_keys": [
+        "292a0ca450d6cdffe9e7175614f82048",
+        "be6be74f4068292c38e96fad10aad29d",
+        "7be3a793a8bea15f5ffc53acfbaf8196",
+        "fd855af9bb868a610a7ea84520b09356"
+      ],
+      "completed_at": "2026-08-11T15:38:31.428013+00:00"
+    },
+    {
+      "trace_id": "trace_tenant_bright_connection_001_880f66d17997",
+      "tenant_id": "tenant_bright_connection_001",
+      "connector_id": "bright_dms",
+      "records_ingested": 3,
+      "records_failed": 0,
+      "events": [
+        {
+          "event_id": "evt_66d4d27fbd5d417e",
+          "event_type": "sync_started",
+          "connector_id": "bright_dms",
+          "tenant_id": "tenant_bright_connection_001",
+          "trace_id": "trace_tenant_bright_connection_001_880f66d17997",
+          "timestamp": "2026-08-11T15:38:31.428049+00:00",
+          "payload": {
+            "entity_types": [
+              "dealer",
+              "scheme",
+              "product_catalogue"
+            ]
+          },
+          "schema_version": "1.0"
+        },
+        {
+          "event_id": "evt_2b1cb6779bfc47a8",
+          "event_type": "data_received",
+          "connector_id": "bright_dms",
+          "tenant_id": "tenant_bright_connection_001",
+          "trace_id": "trace_tenant_bright_connection_001_880f66d17997",
+          "timestamp": "2026-08-11T15:38:31.428086+00:00",
+          "payload": {
+            "entity_type": "dealer",
+            "count": 1
+          },
+          "schema_version": "1.0"
+        },
+        {
+          "event_id": "evt_a6fd16942ab8402f",
+          "event_type": "data_received",
+          "connector_id": "bright_dms",
+          "tenant_id": "tenant_bright_connection_001",
+          "trace_id": "trace_tenant_bright_connection_001_880f66d17997",
+          "timestamp": "2026-08-11T15:38:31.428119+00:00",
+          "payload": {
+            "entity_type": "scheme",
+            "count": 1
+          },
+          "schema_version": "1.0"
+        },
+        {
+          "event_id": "evt_b9a0df62ea84454d",
+          "event_type": "data_received",
+          "connector_id": "bright_dms",
+          "tenant_id": "tenant_bright_connection_001",
+          "trace_id": "trace_tenant_bright_connection_001_880f66d17997",
+          "timestamp": "2026-08-11T15:38:31.428149+00:00",
+          "payload": {
+            "entity_type": "product_catalogue",
+            "count": 1
+          },
+          "schema_version": "1.0"
+        },
+        {
+          "event_id": "evt_3a5280679cae40e9",
+          "event_type": "sync_completed",
+          "connector_id": "bright_dms",
+          "tenant_id": "tenant_bright_connection_001",
+          "trace_id": "trace_tenant_bright_connection_001_880f66d17997",
+          "timestamp": "2026-08-11T15:38:31.428160+00:00",
+          "payload": {
+            "records_ingested": 3,
+            "records_failed": 0
+          },
+          "schema_version": "1.0"
+        }
+      ],
+      "errors": [],
+      "replay_keys": [
+        "72f82990e7adb901eb2bbd85aa2f19b5",
+        "5b21f5c29977232416ebf322c5d8c28d",
+        "705de6a577a194dd33de44fe7c031a7a"
+      ],
+      "completed_at": "2026-08-11T15:38:31.428153+00:00"
+    },
+    {
+      "trace_id": "trace_tenant_bright_connection_001_a6c50b4f1a9f",
+      "tenant_id": "tenant_bright_connection_001",
+      "connector_id": "bright_inventory",
+      "records_ingested": 2,
+      "records_failed": 0,
+      "events": [
+        {
+          "event_id": "evt_800e4c38815f4e65",
+          "event_type": "sync_started",
+          "connector_id": "bright_inventory",
+          "tenant_id": "tenant_bright_connection_001",
+          "trace_id": "trace_tenant_bright_connection_001_a6c50b4f1a9f",
+          "timestamp": "2026-08-11T15:38:31.428183+00:00",
+          "payload": {
+            "entity_types": [
+              "inventory",
+              "damaged_goods"
+            ]
+          },
+          "schema_version": "1.0"
+        },
+        {
+          "event_id": "evt_4822118efc4146b6",
+          "event_type": "data_received",
+          "connector_id": "bright_inventory",
+          "tenant_id": "tenant_bright_connection_001",
+          "trace_id": "trace_tenant_bright_connection_001_a6c50b4f1a9f",
+          "timestamp": "2026-08-11T15:38:31.428215+00:00",
+          "payload": {
+            "entity_type": "inventory",
+            "count": 1
+          },
+          "schema_version": "1.0"
+        },
+        {
+          "event_id": "evt_d35b0d83ac10483f",
+          "event_type": "data_received",
+          "connector_id": "bright_inventory",
+          "tenant_id": "tenant_bright_connection_001",
+          "trace_id": "trace_tenant_bright_connection_001_a6c50b4f1a9f",
+          "timestamp": "2026-08-11T15:38:31.428246+00:00",
+          "payload": {
+            "entity_type": "damaged_goods",
+            "count": 1
+          },
+          "schema_version": "1.0"
+        },
+        {
+          "event_id": "evt_48e27a5224154816",
+          "event_type": "sync_completed",
+          "connector_id": "bright_inventory",
+          "tenant_id": "tenant_bright_connection_001",
+          "trace_id": "trace_tenant_bright_connection_001_a6c50b4f1a9f",
+          "timestamp": "2026-08-11T15:38:31.428256+00:00",
+          "payload": {
+            "records_ingested": 2,
+            "records_failed": 0
+          },
+          "schema_version": "1.0"
+        }
+      ],
+      "errors": [],
+      "replay_keys": [
+        "e9fc42f4a79fa50186535bccec1086cd",
+        "1f603d0db4208b5cf30d96eebec11fdb"
+      ],
+      "completed_at": "2026-08-11T15:38:31.428249+00:00"
+    },
+    {
+      "trace_id": "trace_tenant_bright_connection_001_e2ca656abe64",
+      "tenant_id": "tenant_bright_connection_001",
+      "connector_id": "bright_orders",
+      "records_ingested": 3,
+      "records_failed": 0,
+      "events": [
+        {
+          "event_id": "evt_bcb2a0fde99d4da4",
+          "event_type": "sync_started",
+          "connector_id": "bright_orders",
+          "tenant_id": "tenant_bright_connection_001",
+          "trace_id": "trace_tenant_bright_connection_001_e2ca656abe64",
+          "timestamp": "2026-08-11T15:38:31.428279+00:00",
+          "payload": {
+            "entity_types": [
+              "order",
+              "invoice",
+              "payment_receipt"
+            ]
+          },
+          "schema_version": "1.0"
+        },
+        {
+          "event_id": "evt_2c27d02ab70e4805",
+          "event_type": "data_received",
+          "connector_id": "bright_orders",
+          "tenant_id": "tenant_bright_connection_001",
+          "trace_id": "trace_tenant_bright_connection_001_e2ca656abe64",
+          "timestamp": "2026-08-11T15:38:31.428317+00:00",
+          "payload": {
+            "entity_type": "order",
+            "count": 1
+          },
+          "schema_version": "1.0"
+        },
+        {
+          "event_id": "evt_e10c105bc3a74ddc",
+          "event_type": "data_received",
+          "connector_id": "bright_orders",
+          "tenant_id": "tenant_bright_connection_001",
+          "trace_id": "trace_tenant_bright_connection_001_e2ca656abe64",
+          "timestamp": "2026-08-11T15:38:31.428351+00:00",
+          "payload": {
+            "entity_type": "invoice",
+            "count": 1
+          },
+          "schema_version": "1.0"
+        },
+        {
+          "event_id": "evt_19bb3be939ef4898",
+          "event_type": "data_received",
+          "connector_id": "bright_orders",
+          "tenant_id": "tenant_bright_connection_001",
+          "trace_id": "trace_tenant_bright_connection_001_e2ca656abe64",
+          "timestamp": "2026-08-11T15:38:31.428381+00:00",
+          "payload": {
+            "entity_type": "payment_receipt",
+            "count": 1
+          },
+          "schema_version": "1.0"
+        },
+        {
+          "event_id": "evt_ee3643d727964239",
+          "event_type": "sync_completed",
+          "connector_id": "bright_orders",
+          "tenant_id": "tenant_bright_connection_001",
+          "trace_id": "trace_tenant_bright_connection_001_e2ca656abe64",
+          "timestamp": "2026-08-11T15:38:31.428392+00:00",
+          "payload": {
+            "records_ingested": 3,
+            "records_failed": 0
+          },
+          "schema_version": "1.0"
+        }
+      ],
+      "errors": [],
+      "replay_keys": [
+        "1beb33160a1651089a83df213f12b7f4",
+        "156aedcfe6699ca3e37f3f3e307f4dd9",
+        "e763d58dcd048245623dbbca88c090ec"
+      ],
+      "completed_at": "2026-08-11T15:38:31.428385+00:00"
+    },
+    {
+      "trace_id": "trace_tenant_bright_connection_001_8b81186449cc",
+      "tenant_id": "tenant_bright_connection_001",
+      "connector_id": "bright_sales",
+      "records_ingested": 1,
+      "records_failed": 0,
+      "events": [
+        {
+          "event_id": "evt_42dc0dbada904ae2",
+          "event_type": "sync_started",
+          "connector_id": "bright_sales",
+          "tenant_id": "tenant_bright_connection_001",
+          "trace_id": "trace_tenant_bright_connection_001_8b81186449cc",
+          "timestamp": "2026-08-11T15:38:31.428415+00:00",
+          "payload": {
+            "entity_types": [
+              "order"
+            ]
+          },
+          "schema_version": "1.0"
+        },
+        {
+          "event_id": "evt_b85d55aafafc42bf",
+          "event_type": "data_received",
+          "connector_id": "bright_sales",
+          "tenant_id": "tenant_bright_connection_001",
+          "trace_id": "trace_tenant_bright_connection_001_8b81186449cc",
+          "timestamp": "2026-08-11T15:38:31.428447+00:00",
+          "payload": {
+            "entity_type": "order",
+            "count": 1
+          },
+          "schema_version": "1.0"
+        },
+        {
+          "event_id": "evt_5a981c3683e74f5b",
+          "event_type": "sync_completed",
+          "connector_id": "bright_sales",
+          "tenant_id": "tenant_bright_connection_001",
+          "trace_id": "trace_tenant_bright_connection_001_8b81186449cc",
+          "timestamp": "2026-08-11T15:38:31.428460+00:00",
+          "payload": {
+            "records_ingested": 1,
+            "records_failed": 0
+          },
+          "schema_version": "1.0"
+        }
+      ],
+      "errors": [],
+      "replay_keys": [
+        "783d62c9a73753c2c71a6f77b51e752d"
+      ],
+      "completed_at": "2026-08-11T15:38:31.428452+00:00"
+    },
+    {
+      "trace_id": "trace_tenant_bright_connection_001_178652b12355",
+      "tenant_id": "tenant_bright_connection_001",
+      "connector_id": "bright_collections",
+      "records_ingested": 2,
+      "records_failed": 0,
+      "events": [
+        {
+          "event_id": "evt_3c444e9e6ca84657",
+          "event_type": "sync_started",
+          "connector_id": "bright_collections",
+          "tenant_id": "tenant_bright_connection_001",
+          "trace_id": "trace_tenant_bright_connection_001_178652b12355",
+          "timestamp": "2026-08-11T15:38:31.428497+00:00",
+          "payload": {
+            "entity_types": [
+              "collection",
+              "outstanding"
+            ]
+          },
+          "schema_version": "1.0"
+        },
+        {
+          "event_id": "evt_09e6578cb79544a4",
+          "event_type": "data_received",
+          "connector_id": "bright_collections",
+          "tenant_id": "tenant_bright_connection_001",
+          "trace_id": "trace_tenant_bright_connection_001_178652b12355",
+          "timestamp": "2026-08-11T15:38:31.428534+00:00",
+          "payload": {
+            "entity_type": "collection",
+            "count": 1
+          },
+          "schema_version": "1.0"
+        },
+        {
+          "event_id": "evt_889cec50666a4420",
+          "event_type": "data_received",
+          "connector_id": "bright_collections",
+          "tenant_id": "tenant_bright_connection_001",
+          "trace_id": "trace_tenant_bright_connection_001_178652b12355",
+          "timestamp": "2026-08-11T15:38:31.428563+00:00",
+          "payload": {
+            "entity_type": "outstanding",
+            "count": 1
+          },
+          "schema_version": "1.0"
+        },
+        {
+          "event_id": "evt_8104425d4dbd47cc",
+          "event_type": "sync_completed",
+          "connector_id": "bright_collections",
+          "tenant_id": "tenant_bright_connection_001",
+          "trace_id": "trace_tenant_bright_connection_001_178652b12355",
+          "timestamp": "2026-08-11T15:38:31.428615+00:00",
+          "payload": {
+            "records_ingested": 2,
+            "records_failed": 0
+          },
+          "schema_version": "1.0"
+        }
+      ],
+      "errors": [],
+      "replay_keys": [
+        "c5a8e18b4f8e68ec642b1501215a1b5e",
+        "53c1185a1d8e303ef0126a024b2beb4a"
+      ],
+      "completed_at": "2026-08-11T15:38:31.428606+00:00"
+    },
+    {
+      "trace_id": "trace_tenant_bright_connection_001_9cacd5baf8d1",
+      "tenant_id": "tenant_bright_connection_001",
+      "connector_id": "bright_dealer",
+      "records_ingested": 1,
+      "records_failed": 0,
+      "events": [
+        {
+          "event_id": "evt_6cc0cbe601f74d87",
+          "event_type": "sync_started",
+          "connector_id": "bright_dealer",
+          "tenant_id": "tenant_bright_connection_001",
+          "trace_id": "trace_tenant_bright_connection_001_9cacd5baf8d1",
+          "timestamp": "2026-08-11T15:38:31.428639+00:00",
+          "payload": {
+            "entity_types": [
+              "dealer"
+            ]
+          },
+          "schema_version": "1.0"
+        },
+        {
+          "event_id": "evt_8530b422abe9493b",
+          "event_type": "data_received",
+          "connector_id": "bright_dealer",
+          "tenant_id": "tenant_bright_connection_001",
+          "trace_id": "trace_tenant_bright_connection_001_9cacd5baf8d1",
+          "timestamp": "2026-08-11T15:38:31.428686+00:00",
+          "payload": {
+            "entity_type": "dealer",
+            "count": 1
+          },
+          "schema_version": "1.0"
+        },
+        {
+          "event_id": "evt_4922ea52da2a4fff",
+          "event_type": "sync_completed",
+          "connector_id": "bright_dealer",
+          "tenant_id": "tenant_bright_connection_001",
+          "trace_id": "trace_tenant_bright_connection_001_9cacd5baf8d1",
+          "timestamp": "2026-08-11T15:38:31.428699+00:00",
+          "payload": {
+            "records_ingested": 1,
+            "records_failed": 0
+          },
+          "schema_version": "1.0"
+        }
+      ],
+      "errors": [],
+      "replay_keys": [
+        "603b6c2d4f4e3a2498719fe7d87e9c9a"
+      ],
+      "completed_at": "2026-08-11T15:38:31.428692+00:00"
+    }
+  ],
+  "masterdb_snapshot": {
+    "tenant_id": "tenant_bright_connection_001",
+    "entity_counts": {
+      "order": 3,
+      "collection": 2,
+      "outstanding": 2,
+      "visit": 1,
+      "beat_plan": 1,
+      "route_plan": 1,
+      "display_compliance": 1,
+      "dealer": 2,
+      "scheme": 1,
+      "product_catalogue": 1,
+      "inventory": 1,
+      "damaged_goods": 1,
+      "invoice": 1,
+      "payment_receipt": 1
+    },
+    "total_records": 19
+  },
+  "replay_log": [
+    {
+      "replayed_at": "2026-08-11T15:38:31.428776+00:00",
+      "tenant_id": "tenant_bright_connection_001",
+      "idempotency_key": "fca781fac9e35ea3fd8f697b49db870f",
+      "entity_type": "order",
+      "entity_id": "BA-ORD-001",
+      "integrity_hash": "b7e7570e0dbc9c0a3d685b6c4ee1f67303ef2a121574619d9db26c527fb4af71"
+    },
+    {
+      "replayed_at": "2026-08-11T15:38:31.428828+00:00",
+      "tenant_id": "tenant_bright_connection_001",
+      "idempotency_key": "db38a1d51fae5777fee45bb329fe03c7",
+      "entity_type": "collection",
+      "entity_id": "BA-COL-001",
+      "integrity_hash": "c589cb4a6bd4060b0f500e747ff3a56bdb97dabe3030af63a409bbff5e270343"
+    },
+    {
+      "replayed_at": "2026-08-11T15:38:31.428845+00:00",
+      "tenant_id": "tenant_bright_connection_001",
+      "idempotency_key": "8fd2ae101f9490c8bd473ba70c876fdb",
+      "entity_type": "outstanding",
+      "entity_id": "BA-OUT-001",
+      "integrity_hash": "f3d5be12051639ef8869350e60c51691bd96daea44ae3b35cf6f54a63bee3432"
+    },
+    {
+      "replayed_at": "2026-08-11T15:38:31.428857+00:00",
+      "tenant_id": "tenant_bright_connection_001",
+      "idempotency_key": "292a0ca450d6cdffe9e7175614f82048",
+      "entity_type": "visit",
+      "entity_id": "VIS-001",
+      "integrity_hash": "10c57c79dfcca5daede5a38cee805134de84f665451c8facdb842342ab86ac7e"
+    },
+    {
+      "replayed_at": "2026-08-11T15:38:31.428872+00:00",
+      "tenant_id": "tenant_bright_connection_001",
+      "idempotency_key": "be6be74f4068292c38e96fad10aad29d",
+      "entity_type": "beat_plan",
+      "entity_id": "BEAT-001",
+      "integrity_hash": "fb7ab6240a9e1dcfb0e983d84cc12df1f9f145fd6fc965d928a764ca1b78b36b"
+    },
+    {
+      "replayed_at": "2026-08-11T15:38:31.428882+00:00",
+      "tenant_id": "tenant_bright_connection_001",
+      "idempotency_key": "7be3a793a8bea15f5ffc53acfbaf8196",
+      "entity_type": "route_plan",
+      "entity_id": "ROUTE-001",
+      "integrity_hash": "ab600798dbfcad824390c0e268d22f94df73e008d4bcff75a830d86486b8f527"
+    },
+    {
+      "replayed_at": "2026-08-11T15:38:31.428893+00:00",
+      "tenant_id": "tenant_bright_connection_001",
+      "idempotency_key": "fd855af9bb868a610a7ea84520b09356",
+      "entity_type": "display_compliance",
+      "entity_id": "COMP-001",
+      "integrity_hash": "ee771cff339ee8e92f0ad4d2a951003e97d561ec4365df3b82ce92fb9dc1709e"
+    },
+    {
+      "replayed_at": "2026-08-11T15:38:31.428903+00:00",
+      "tenant_id": "tenant_bright_connection_001",
+      "idempotency_key": "72f82990e7adb901eb2bbd85aa2f19b5",
+      "entity_type": "dealer",
+      "entity_id": "DLR-001",
+      "integrity_hash": "e28293874d8aae67ec33d14cc7f9d968061ce5bb37dfcf1f1bb4e800512ea906"
+    },
+    {
+      "replayed_at": "2026-08-11T15:38:31.428917+00:00",
+      "tenant_id": "tenant_bright_connection_001",
+      "idempotency_key": "5b21f5c29977232416ebf322c5d8c28d",
+      "entity_type": "scheme",
+      "entity_id": "SCH-001",
+      "integrity_hash": "fe2a47587dd2bc39a91c2a99aef1441bbf1cbbb089ff94555f5b7e3e2e32d5b3"
+    },
+    {
+      "replayed_at": "2026-08-11T15:38:31.428927+00:00",
+      "tenant_id": "tenant_bright_connection_001",
+      "idempotency_key": "705de6a577a194dd33de44fe7c031a7a",
+      "entity_type": "product_catalogue",
+      "entity_id": "SKU-101",
+      "integrity_hash": "850da1a2dc9fc6d796af2bed0591327837c6369e4d667856c50437499196eea0"
+    },
+    {
+      "replayed_at": "2026-08-11T15:38:31.428939+00:00",
+      "tenant_id": "tenant_bright_connection_001",
+      "idempotency_key": "e9fc42f4a79fa50186535bccec1086cd",
+      "entity_type": "inventory",
+      "entity_id": "INV-001",
+      "integrity_hash": "15c44c89b809a6b2b1169f196abb7463370a8a3e586816f3616cff1f330e0f36"
+    },
+    {
+      "replayed_at": "2026-08-11T15:38:31.428950+00:00",
+      "tenant_id": "tenant_bright_connection_001",
+      "idempotency_key": "1f603d0db4208b5cf30d96eebec11fdb",
+      "entity_type": "damaged_goods",
+      "entity_id": "DMG-001",
+      "integrity_hash": "57f328d4ec0cdad14e1699194a0fef4ed6923b693510a35028cba70338c2cadd"
+    },
+    {
+      "replayed_at": "2026-08-11T15:38:31.428960+00:00",
+      "tenant_id": "tenant_bright_connection_001",
+      "idempotency_key": "1beb33160a1651089a83df213f12b7f4",
+      "entity_type": "order",
+      "entity_id": "ORD-2025-001",
+      "integrity_hash": "586a685db047f911f6651981a94b7386401493337dc4b402c6b2379db1aa1b6c"
+    },
+    {
+      "replayed_at": "2026-08-11T15:38:31.428971+00:00",
+      "tenant_id": "tenant_bright_connection_001",
+      "idempotency_key": "156aedcfe6699ca3e37f3f3e307f4dd9",
+      "entity_type": "invoice",
+      "entity_id": "INV-2025-001",
+      "integrity_hash": "ca734a014a6f42a032e4393be27ba45cafb35ac9fa87cb8d62cd5b7698cb554e"
+    },
+    {
+      "replayed_at": "2026-08-11T15:38:31.428981+00:00",
+      "tenant_id": "tenant_bright_connection_001",
+      "idempotency_key": "e763d58dcd048245623dbbca88c090ec",
+      "entity_type": "payment_receipt",
+      "entity_id": "RCP-2025-001",
+      "integrity_hash": "e43ac20b46dff357eb93dda0bd2c9a10a2f22759470f52a67bb8669fab8db0fd"
+    },
+    {
+      "replayed_at": "2026-08-11T15:38:31.428991+00:00",
+      "tenant_id": "tenant_bright_connection_001",
+      "idempotency_key": "783d62c9a73753c2c71a6f77b51e752d",
+      "entity_type": "order",
+      "entity_id": "SO-2025-001",
+      "integrity_hash": "64bd7f9f92783927643350f70866123c476b9cea0eed9c1a715f9dc29121d9d2"
+    },
+    {
+      "replayed_at": "2026-08-11T15:38:31.429002+00:00",
+      "tenant_id": "tenant_bright_connection_001",
+      "idempotency_key": "c5a8e18b4f8e68ec642b1501215a1b5e",
+      "entity_type": "collection",
+      "entity_id": "COL-2025-001",
+      "integrity_hash": "f11de509947592d3571877fa1fd63631277a5bb45eca78b355b1783a4ad840ba"
+    },
+    {
+      "replayed_at": "2026-08-11T15:38:31.429013+00:00",
+      "tenant_id": "tenant_bright_connection_001",
+      "idempotency_key": "53c1185a1d8e303ef0126a024b2beb4a",
+      "entity_type": "outstanding",
+      "entity_id": "OUT-2025-001",
+      "integrity_hash": "1db649d94d706ad755a8e96ba68a21261ffd92de5baccdf9871bfeb3db5a4f4a"
+    },
+    {
+      "replayed_at": "2026-08-11T15:38:31.429023+00:00",
+      "tenant_id": "tenant_bright_connection_001",
+      "idempotency_key": "603b6c2d4f4e3a2498719fe7d87e9c9a",
+      "entity_type": "dealer",
+      "entity_id": "DLR-001",
+      "integrity_hash": "47f413bc38da1d21e67153c1e6d5615c323ee3d569f43c62a18f9ae81707b3af"
+    },
+    {
+      "replayed_at": "2026-08-11T15:38:31.429062+00:00",
+      "tenant_id": "tenant_bright_connection_001",
+      "idempotency_key": "fca781fac9e35ea3fd8f697b49db870f",
+      "entity_type": "order",
+      "entity_id": "BA-ORD-001",
+      "integrity_hash": "b7e7570e0dbc9c0a3d685b6c4ee1f67303ef2a121574619d9db26c527fb4af71"
+    }
+  ],
+  "certification": {
+    "certified": true,
+    "checks_passed": 45,
+    "checks_total": 45,
+    "completed_at": "2026-08-11T15:38:31.431666+00:00",
+    "verdict": "CERTIFIED"
+  }
+}
