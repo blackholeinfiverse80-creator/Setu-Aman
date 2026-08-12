@@ -1,0 +1,37 @@
+{
+  "tenant_id": "tenant_bright_connection_001",
+
+  "tally": {
+    "tally_host": "192.168.0.72",
+    "tally_port": 9000,
+    "timeout_seconds": 30,
+    "test_mode": true,
+    "_note_test_mode": "Set test_mode to false when running on the actual LAN with TallyPrime running"
+  },
+
+  "setu": {
+    "endpoint": "https://setu.example.com/connectors/tally/ingest",
+    "api_key": "<setu_api_key>",
+    "_note": "Replace endpoint and api_key with actual SETU ingest URL and key"
+  },
+
+  "entity_types": [
+    "ledger",
+    "invoice",
+    "payment",
+    "outstanding"
+  ],
+
+  "poll_interval_seconds": 300,
+
+  "_setup_notes": {
+    "tally_version": "TallyPrime 6.1 Silver",
+    "tally_machine_ip": "192.168.0.72",
+    "tally_xml_port": 9000,
+    "tally_gateway_server": "SERVER:9999 (Tally's own internet sync - not used by SETU)",
+    "data_path": "D:\\TallyPrime-Live Data\\Live Data (shared)",
+    "connection_approach": "Bridge agent runs on LAN, polls port 9000 via HTTP XML, forwards to SETU over HTTPS",
+    "firewall_requirement": "Outbound HTTPS only from bridge machine to SETU - no inbound rules needed",
+    "tally_setting_required": "In TallyPrime: F12 > Advanced Config > Client/Server must be ON on port 9000"
+  }
+}

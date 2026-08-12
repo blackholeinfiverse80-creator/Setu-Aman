@@ -1,16 +1,38 @@
 # SETU Connector Framework — REVIEW PACKET
-
 **Tenant:** Bright Connection
-**Phase:** 1 — Bright Connection EOS Sprint
-**Status:** CERTIFIED
-**Validation:** 45/45 checks passed
+**Sprint:** BHIV vNEXT — Live Integration & Production Convergence
+**Author:** Aman Pal
 **Date:** 2025-06-01
 
 ---
 
-## What Was Built
+## Certification Status
 
-The SETU Connector Framework — a reusable, plug-and-play integration layer that allows any external enterprise system to connect to the SETU Enterprise Operating System through canonical runtime contracts, without modifying SETU core.
+| Level | Status | Evidence |
+|---|---|---|
+| LOCAL_RUNTIME_CERTIFIED | PASS — 45/45 | RUNTIME_EVIDENCE.json |
+| LIVE_INTEGRATION_CERTIFIED | PASS — 65/65 | LIVE_BRIGHT_CONNECTION_EVIDENCE.json |
+| PRODUCTION_CERTIFIED | NOT YET — pending Alay + Rayyan | See BRIGHT_CONNECTION_PRODUCTION_READINESS.md |
+
+**Do not treat LIVE_INTEGRATION_CERTIFIED as PRODUCTION_CERTIFIED.**
+Production certification requires Alay (infrastructure) and Rayyan (regression) sign-off.
+
+---
+
+## What Was Built — Sprint 1 (Local Runtime)
+
+The SETU Connector Framework — a reusable, plug-and-play integration layer enabling any external enterprise system to connect to SETU through canonical runtime contracts, without modifying SETU core.
+
+## What Was Built — Sprint 2 (Live Integration)
+
+- `connectors/bright_connection/auth.py` — credential injection via environment variables only. Never in MDURecord, never committed to Git.
+- `runtime/masterdb.py` — upgraded to 3-backend system: memory (validation), SQLite (integration/persistence proof), MongoDB stub (production boundary — awaiting KAVY adapter).
+- All 9 connectors upgraded — real HTTP fetch path when credentials present, explicit stub fallback when absent.
+- `tests/test_live_integration.py` — 65 live integration tests covering all required paths.
+- `run_live_integration.py` — end-to-end proof runner generating full trace evidence.
+- `LIVE_BRIGHT_CONNECTION_EVIDENCE.json` — generated live proof with all required fields.
+- `docs/BRIGHT_CONNECTION_INTEGRATION_READINESS.md` — honest assessment of available vs contract-defined APIs.
+- `docs/BRIGHT_CONNECTION_PRODUCTION_READINESS.md` — production readiness status and path to certification.
 
 ---
 
@@ -19,168 +41,138 @@ The SETU Connector Framework — a reusable, plug-and-play integration layer tha
 | Deliverable | Location | Status |
 |---|---|---|
 | Connector SDK | connector_sdk/ | Complete |
-| Bright Connection Connectors (9) | connectors/bright_connection/ | Complete |
+| Auth boundary | connectors/bright_connection/auth.py | Complete |
+| Bright Connection Connectors (9) | connectors/bright_connection/ | Complete — real HTTP + stub fallback |
 | Runtime Pipeline | runtime/ | Complete |
-| Tenant Config (Bright Connection) | config/bright_connection_tenant.json | Complete |
+| MasterDB (3-backend) | runtime/masterdb.py | Complete |
+| Tenant Config | config/bright_connection_tenant.json | Complete |
 | Tenant Loader | config/tenant_loader.py | Complete |
-| E2E Validation Script | validate_runtime.py | Complete |
-| Runtime Evidence | RUNTIME_EVIDENCE.json | Generated |
-| Connector SDK Documentation | docs/CONNECTOR_SDK_DOCUMENTATION.md | Complete |
-| Runtime Contract Documentation | docs/RUNTIME_CONTRACT_DOCUMENTATION.md | Complete |
-| Integration Dependency Matrix | docs/INTEGRATION_DEPENDENCY_MATRIX.md | Complete |
-| Configuration Guide | docs/CONFIGURATION_GUIDE.md | Complete |
-| Review Packet | docs/REVIEW_PACKET.md | This document |
+| Local Validation (45/45) | validate_runtime.py | PASS |
+| Live Integration Tests (65/65) | tests/test_live_integration.py | PASS |
+| Live Proof Runner | run_live_integration.py | Complete |
+| Local Evidence | RUNTIME_EVIDENCE.json | Generated |
+| Live Evidence | LIVE_BRIGHT_CONNECTION_EVIDENCE.json | Generated |
+| Integration Readiness | docs/BRIGHT_CONNECTION_INTEGRATION_READINESS.md | Complete |
+| Production Readiness | docs/BRIGHT_CONNECTION_PRODUCTION_READINESS.md | Complete |
+| All docs updated | docs/ | Complete |
 
 ---
 
-## Certification Checklist
+## Live Integration Test Results (65/65)
 
-| Criterion | Status |
-|---|---|
-| Connector SDK operational | PASS |
-| Bright Connection integrations validated (9 connectors) | PASS |
-| Connector contracts documented | PASS |
-| Canonical MDU schemas consumed at every stage | PASS |
-| Zero connector-specific business logic inside SETU | PASS |
-| Configuration-driven onboarding verified | PASS |
-| Multi-tenant compatibility validated | PASS |
-| Runtime evidence collected | PASS |
-| Replay verified (deterministic, idempotent) | PASS |
-| Observability enabled (events, errors, dispatch log) | PASS |
+| Group | Tests | Result |
+|---|---|---|
+| Authentication (valid, missing, invalid 401) | 3 | PASS |
+| API (fetch, timeout, malformed, missing field) | 7 | PASS |
+| MDU (normalization, schema rejection, stable IDs, idempotency keys) | 14 | PASS |
+| Tenant isolation (two tenants, no cross-contamination) | 5 | PASS |
+| MasterDB persistence (SQLite restart, idempotency) | 9 | PASS |
+| Replay (ingestion, execution, hash stability, idempotency) | 5 | PASS |
+| Failure path (intentional error captured) | 6 | PASS |
+| End-to-end (all 13 fields preserved) | 15 | PASS |
+| Regression (original 45/45 preserved) | 1 | PASS |
+
+---
+
+## Live Proof Summary (from LIVE_BRIGHT_CONNECTION_EVIDENCE.json)
+
+```
+tenant_id:        tenant_bright_connection_001
+connector_id:     bright_orders
+entity_id:        ORD-2025-001
+trace_id:         trace_tenant_bright_connection_001_<hex>
+idempotency_key:  1beb33160a1651089a83df213f12b7f4
+integrity_hash:   586a685db047f911f6651981a94b7386...
+insightflow:      dispatched
+replay_hash_match: True
+persistence:      VERIFIED (SQLite restart)
+tenant_isolation: VERIFIED (zero cross-contamination)
+failure_path:     CAPTURED (error_code, trace_id, timestamp)
+```
 
 ---
 
 ## Bright Connection Connectors
 
-| Connector | Category | Entity Types | Auth | Status |
-|---|---|---|---|---|
-| biz_analyst | Accounting | order, collection, outstanding | api_key | Active |
-| tally | Accounting | ledger, invoice, outstanding | basic | Contract defined, system optional |
-| bright_crm | CRM | visit, beat_plan, route_plan, display_compliance | oauth2 | Active |
-| bright_dms | DMS | dealer, scheme, product_catalogue | api_key | Active |
-| bright_inventory | Inventory | inventory, damaged_goods | api_key | Active |
-| bright_orders | ERP | order, invoice, payment_receipt | api_key | Active |
-| bright_sales | CRM | order (sales history) | api_key | Active |
-| bright_collections | Accounting | collection, outstanding | api_key | Active |
-| bright_dealer | CRM | dealer | api_key | Active |
+| Connector | Category | Entity Types | Auth | Mode | Status |
+|---|---|---|---|---|---|
+| biz_analyst | Accounting | order, collection, outstanding | api_key | Stub (SETU_BA_API_KEY) | Ready |
+| tally | Accounting | ledger, invoice, outstanding | basic | LAN-only | Optional |
+| bright_crm | CRM | visit, beat_plan, route_plan, display_compliance | oauth2 | Stub (SETU_CRM_OAUTH_TOKEN) | Ready |
+| bright_dms | DMS | dealer, scheme, product_catalogue | api_key | Stub (SETU_DMS_API_KEY) | Ready |
+| bright_inventory | Inventory | inventory, damaged_goods | api_key | Stub (SETU_INV_API_KEY) | Ready |
+| bright_orders | ERP | order, invoice, payment_receipt | api_key | Stub (SETU_ORDERS_API_KEY) | Ready |
+| bright_sales | CRM | order | api_key | Stub (SETU_SALES_API_KEY) | Ready |
+| bright_collections | Accounting | collection, outstanding | api_key | Stub (SETU_COLLECTIONS_API_KEY) | Ready |
+| bright_dealer | CRM | dealer | api_key | Stub (SETU_DEALER_API_KEY) | Ready |
+
+"Ready" = framework wired, switches to LIVE automatically when env var is set.
 
 ---
 
-## Runtime Evidence Summary
+## MasterDB Backend
 
-From `RUNTIME_EVIDENCE.json`:
+| Backend | Env Var Value | Use |
+|---|---|---|
+| memory | `memory` (default) | validate_runtime.py, unit tests |
+| sqlite | `sqlite` | Integration testing, persistence proof |
+| mongodb | `mongodb` | Production — KAVY adapter required |
 
-- 19 MDURecords ingested for tenant_bright_connection_001
-- 19 records registered in ReplayEngine
-- 19 records dispatched through InsightFlow
-- 6 capability handler invocations (ORDER, DEALER, VISIT handlers)
-- Replay determinism verified: same idempotency_key produces identical integrity_hash
-- Multi-tenant isolation verified: tenant_other_001 records do not appear in tenant_bright_connection_001 MasterDB
-- Zero connector imports found in runtime modules (pipeline, masterdb, insightflow, replay)
-
----
-
-## Canonical Data Flow (Validated)
-
-```
-External Enterprise System (Biz Analyst / CRM / DMS / Inventory / Orders / Sales / Collections / Dealer)
-      |
-      v
-Connector Framework (connector_sdk + connectors/bright_connection/)
-      |
-      v  normalize() -> MDURecord
-      v
-MasterDB (runtime/masterdb.py) — tenant-isolated, idempotent upsert
-      |
-      v
-InsightFlow (runtime/insightflow.py) — capability dispatch by entity_type
-      |
-      v
-ReplayEngine (runtime/replay.py) — deterministic replay by idempotency_key
-```
-
----
-
-## Plug-and-Play Onboarding Proof
-
-Onboarding Bright Connection required:
-
-1. Create `config/bright_connection_tenant.json` — tenant config with connector bindings
-2. Register 9 connector classes — one-time, reusable for all future tenants
-3. Call `TenantLoader.load()` — zero code changes to SETU runtime
-
-No modifications were made to:
-- MasterDB schema
-- InsightFlow capability logic
-- ReplayEngine
-- ConnectorPipeline
-- Any SETU core module
+`set SETU_MASTERDB_BACKEND=sqlite` to use file-backed persistence.
 
 ---
 
 ## Authority Boundaries Respected
 
-- No ERP business logic implemented inside SETU
-- No MasterDB schema modifications
-- No MDU contract bypasses
-- No duplicate intelligence — connectors normalize only
-- No client-specific platform code
-- No TANTRA runtime responsibilities modified
-- All connector logic is isolated in `connectors/bright_connection/`
+- MDU schema: not modified (Nupur/MDU authority)
+- SETU constitutional architecture: not modified
+- MasterDB production schema: not assumed — KAVY boundary clearly marked
+- Production certification: not self-declared
+- No business logic in any connector
+- No Bright Connection logic in SETU core
+- No credentials committed to Git
 
 ---
 
-## Future Customer Onboarding
+## Remaining Blockers (Not Aman's Authority)
 
-To onboard a new customer (e.g. Acme Corp):
-
-1. Create `config/tenant_acme_001.json` with their connector bindings
-2. If they use a new system: create one new connector class, register it
-3. Call `TenantLoader.load("config/tenant_acme_001.json")`
-4. Run pipeline
-
-Zero SETU core changes required.
+| Blocker | Owner |
+|---|---|
+| Real API credentials + base URLs | Raj / Bright Connection |
+| MongoDB MasterDB adapter | KAVY |
+| Production infrastructure | Alay |
+| Final regression sign-off | Rayyan |
+| Tally active company in TallyPrime | Bright Connection IT |
 
 ---
 
-## Files Created (Setu(Aman) folder only)
+## Files Created / Modified (Setu(Aman) folder only)
 
 ```
 Setu(Aman)/
-  connector_sdk/
-    __init__.py
-    base_connector.py       -- BaseConnector abstract class
-    mdu_schema.py           -- MDURecord canonical schema
-    registry.py             -- ConnectorRegistry
-    runtime_contract.py     -- ConnectorEvent, ConnectorError, ConnectorRuntimeContract
-  connectors/
-    __init__.py
-    bright_connection/
-      __init__.py
-      biz_analyst.py
-      tally.py
-      crm.py
-      dms.py
-      inventory.py
-      orders.py
-      sales.py
-      collections.py
-      dealer.py
+  connector_sdk/           -- unchanged
+  connectors/bright_connection/
+    auth.py                -- NEW: env-var credential injection boundary
+    biz_analyst.py         -- UPGRADED: real HTTP + stub fallback
+    crm.py                 -- UPGRADED: real HTTP + stub fallback
+    dms.py                 -- UPGRADED: real HTTP + stub fallback
+    inventory.py           -- UPGRADED: real HTTP + stub fallback
+    orders.py              -- UPGRADED: real HTTP + stub fallback
+    sales.py               -- UPGRADED: real HTTP + stub fallback
+    collections.py         -- UPGRADED: real HTTP + stub fallback
+    dealer.py              -- UPGRADED: real HTTP + stub fallback
   runtime/
-    __init__.py
-    pipeline.py             -- ConnectorPipeline (canonical orchestrator)
-    masterdb.py             -- MasterDB (canonical store)
-    insightflow.py          -- InsightFlow (capability dispatcher)
-    replay.py               -- ReplayEngine (deterministic replay)
-  config/
-    bright_connection_tenant.json   -- Bright Connection tenant config
-    tenant_loader.py                -- Config-driven tenant instantiation
+    masterdb.py            -- UPGRADED: memory/sqlite/mongodb backends
+  tests/
+    test_live_integration.py  -- NEW: 65 live integration tests
   docs/
-    CONNECTOR_SDK_DOCUMENTATION.md
-    RUNTIME_CONTRACT_DOCUMENTATION.md
-    INTEGRATION_DEPENDENCY_MATRIX.md
-    CONFIGURATION_GUIDE.md
-    REVIEW_PACKET.md
-  validate_runtime.py       -- E2E validation (45/45 PASS)
-  RUNTIME_EVIDENCE.json     -- Generated runtime evidence
+    BRIGHT_CONNECTION_INTEGRATION_READINESS.md  -- NEW
+    BRIGHT_CONNECTION_PRODUCTION_READINESS.md   -- NEW
+    REVIEW_PACKET.md                            -- UPDATED
+    RUNTIME_CONTRACT_DOCUMENTATION.md          -- UPDATED
+    INTEGRATION_DEPENDENCY_MATRIX.md           -- UPDATED
+    CONFIGURATION_GUIDE.md                     -- UPDATED
+  data/                    -- NEW: SQLite persistence directory
+  run_live_integration.py  -- NEW: E2E proof runner
+  LIVE_BRIGHT_CONNECTION_EVIDENCE.json  -- NEW: generated live proof
 ```

@@ -2,13 +2,20 @@
 Biz Analyst Connector
 Connects to Biz Analyst API and normalizes sales/financial data into MDURecord.
 No business logic — field mapping only.
+
+Real API: HTTP GET {base_url}/{entity_type} with X-API-Key header.
+Fallback: stub data when SETU_BA_API_KEY not set (test/validation mode).
 """
 from __future__ import annotations
 
+import urllib.error
+import urllib.request
+import json as _json
 from typing import Any, Dict, List, Optional
 
 from connector_sdk.base_connector import BaseConnector, ConnectorCategory, ConnectorManifest
 from connector_sdk.mdu_schema import MDUEntityType, MDURecord
+from connectors.bright_connection.auth import is_stub_mode
 
 
 class BizAnalystConnector(BaseConnector):
@@ -39,18 +46,32 @@ class BizAnalystConnector(BaseConnector):
         api_key = self._config.get("api_key")
         base_url = self._config.get("base_url")
         if not api_key or not base_url:
-            raise ValueError("biz_analyst connector requires api_key and base_url in config")
-        # In production: validate key against Biz Analyst auth endpoint
-        # Stub: accept if config keys present
+            raise ValueError("biz_analyst requires api_key and base_url — set SETU_BA_API_KEY and SETU_BA_BASE_URL")
+        if is_stub_mode(self._config):
+            return True  # stub mode — no real auth call
+        # Real auth: validate key with a lightweight ping
+        try:
+            req = urllib.request.Request(
+                f"{base_url}/ping",
+                headers={"X-API-Key": api_key, "Accept": "application/json"},
+            )
+            with urllib.request.urlopen(req, timeout=10):
+                pass
+        except urllib.error.HTTPError as e:
+            if e.code == 401:
+                raise ValueError(f"biz_analyst auth failed: 401 Unauthorized")
+            # Non-auth HTTP errors are not auth failures
         return True
 
     async def fetch_data(self, entity_type: str, params: Optional[Dict[str, Any]] = None) -> List[Dict[str, Any]]:
         """
         Fetch raw records from Biz Analyst API.
-        In production: HTTP GET to self._config['base_url']/entity_type with auth header.
-        Stub returns contract-shaped sample records for validation.
+        Real: HTTP GET {base_url}/{entity_type} with X-API-Key header.
+        Stub: returns contract-shaped sample records when credentials absent.
         """
         params = params or {}
+        if not is_stub_mode(self._config):
+            return self._fetch_real(entity_type, params)
         stubs = {
             MDUEntityType.ORDER.value: [
                 {
@@ -84,6 +105,23 @@ class BizAnalystConnector(BaseConnector):
             ],
         }
         return stubs.get(entity_type, [])
+
+    def _fetch_real(self, entity_type: str, params: Dict[str, Any]) -> List[Dict[str, Any]]:
+        """Real HTTP fetch from Biz Analyst API."""
+        base_url = self._config["base_url"].rstrip("/")
+        api_key = self._config["api_key"]
+        url = f"{base_url}/{entity_type}"
+        req = urllib.request.Request(
+            url,
+            headers={"X-API-Key": api_key, "Accept": "application/json"},
+        )
+        try:
+            with urllib.request.urlopen(req, timeout=30) as resp:
+                return _json.loads(resp.read().decode())
+        except urllib.error.HTTPError as e:
+            raise RuntimeError(f"biz_analyst API error {e.code} for {entity_type}: {e.reason}")
+        except Exception as e:
+            raise RuntimeError(f"biz_analyst fetch failed for {entity_type}: {e}")
 
     def normalize(self, raw_record: Dict[str, Any], entity_type: str) -> MDURecord:
         """Map Biz Analyst raw record to canonical MDURecord. Field mapping only."""

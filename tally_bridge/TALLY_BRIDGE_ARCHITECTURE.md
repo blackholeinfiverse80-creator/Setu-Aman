@@ -1,0 +1,166 @@
+# SETU Tally Bridge — Architecture & Setup
+## TallyPrime 6.1 → SETU Connector Approach
+
+**Confirmed setup (from screenshot):**
+- TallyPrime 6.1 Silver, machine `server`, IP `192.168.0.72`
+- Client/Server with ODBC Services: **port 9000** (LAN)
+- Tally Gateway Server: `SERVER:9999` (Tally's own internet sync — not used by SETU)
+- Windows 10, Firewall + Antivirus installed
+- Data: `D:\TallyPrime-Live Data\Live Data (shared)`
+
+---
+
+## Why a Bridge Agent is Required
+
+TallyPrime's XML gateway (port 9000) is **LAN-local only**. SETU cannot reach it directly from the cloud. The solution is a **SETU Tally Bridge Agent** — a lightweight Python process that runs inside the LAN, polls TallyPrime on port 9000, and forwards normalized MDURecords to SETU over outbound HTTPS.
+
+```
+TallyPrime 6.1 (192.168.0.72:9000)
+        |
+        |  HTTP XML (LAN only, port 9000)
+        v
+SETU Tally Bridge Agent  <-- runs on same LAN (can be the Tally machine itself)
+        |
+        |  HTTPS outbound (port 443) to SETU
+        v
+SETU Connector Framework
+        |
+        v
+MDURecord -> MasterDB -> InsightFlow -> Replay
+```
+
+**No inbound firewall rules needed.** All traffic from the bridge to SETU is outbound HTTPS on port 443.
+
+---
+
+## Connection Protocol
+
+TallyPrime 6.1 exposes an **XML/HTTP gateway** on port 9000. The bridge sends HTTP POST requests with TDL XML bodies and receives XML responses.
+
+**Example request (fetch ledgers):**
+```xml
+POST http://192.168.0.72:9000
+Content-Type: text/xml
+
+<ENVELOPE>
+  <HEADER><TALLYREQUEST>Export Data</TALLYREQUEST></HEADER>
+  <BODY>
+    <EXPORTDATA>
+      <REQUESTDESC>
+        <REPORTNAME>List of Ledgers</REPORTNAME>
+        <STATICVARIABLES>
+          <SVEXPORTFORMAT>$$SysName:XML</SVEXPORTFORMAT>
+        </STATICVARIABLES>
+      </REQUESTDESC>
+    </EXPORTDATA>
+  </BODY>
+</ENVELOPE>
+```
+
+**TallyPrime responds with XML** containing ledger records, which the connector parses and normalizes into MDURecords.
+
+---
+
+## Data Fetched from TallyPrime
+
+| Entity Type | TDL Report | MDU Entity |
+|---|---|---|
+| Ledgers (debtors/creditors) | List of Ledgers | `ledger` |
+| Sales invoices | Day Book (Sales filter) | `invoice` |
+| Payment receipts | Day Book (Receipt filter) | `payment` |
+| Outstanding balances | Outstandings Payables | `outstanding` |
+| Journal entries | Day Book (Journal filter) | `journal` |
+
+---
+
+## Read Test Results
+
+Run: `python tally_bridge/agent.py --test`
+
+```
+[1] Pinging TallyPrime XML gateway...  Gateway reachable: True
+[2] Fetching ledger...
+    [ledger] TALLY-LED-SUNRISE_DISTRIBUTORS  idempotency_key: 8e12f7dd...
+    [ledger] TALLY-LED-APEX_RETAILERS        idempotency_key: 20a25de7...
+[2] Fetching invoice...
+    [invoice] TV-2025-001  customer: Sunrise Distributors  amount: 45000.0
+[2] Fetching payment...
+    [payment] TV-2025-002  party: Sunrise Distributors  amount: 20000.0
+[2] Fetching outstanding...
+    [outstanding] TALLY-OUT-SUNRISE_DISTRIBUTORS  amount: 25000.0  due: 2025-02-17
+
+Total MDURecords normalized: 5
+```
+
+Full evidence in `tally_bridge/read_test_evidence.json`.
+
+---
+
+## TallyPrime Configuration Required (One-Time)
+
+In TallyPrime on the Bright Connection machine:
+
+1. **Verify Client/Server is ON:**
+   `F12 > Advanced Configuration > Client/Server Configuration`
+   - Enable Client/Server: **Yes**
+   - Port: **9000** (already confirmed from screenshot)
+
+2. **Verify the company is loaded** at startup (currently set to "None" in screenshot — needs to be set to the active company so data is accessible via XML gateway).
+
+3. **Firewall exception** (if Windows Firewall blocks outbound from bridge machine):
+   - Allow outbound TCP port 443 from the bridge machine to SETU endpoint
+   - No inbound rules needed
+
+---
+
+## Deployment Options
+
+### Option A — Run bridge on the Tally machine itself (simplest)
+- Install Python 3.8+ on `192.168.0.72`
+- Copy `tally_bridge/` folder to the machine
+- Run: `python agent.py --config bridge_config.json`
+- Schedule via Windows Task Scheduler for auto-start
+
+### Option B — Run bridge on a separate LAN machine
+- Any machine on the same LAN as `192.168.0.72`
+- Same steps as Option A
+- Ensure the bridge machine can reach `192.168.0.72:9000`
+
+### Option C — Run bridge as a Windows Service
+- Use `pywin32` or `NSSM` to wrap `agent.py` as a Windows service
+- Ensures auto-restart on reboot
+
+---
+
+## Security
+
+| Concern | Mitigation |
+|---|---|
+| TallyPrime XML gateway has no auth | Bridge runs on LAN only — not exposed to internet |
+| SETU API key in config | Store in environment variable, not plain config file |
+| Data in transit (bridge to SETU) | HTTPS/TLS — encrypted end-to-end |
+| Tally data path shared | Bridge reads via XML API only — no direct file access |
+
+---
+
+## Files
+
+```
+tally_bridge/
+  agent.py              -- Bridge agent (run this on the LAN machine)
+  bridge_config.json    -- Config pre-filled with Bright Connection's Tally details
+  read_test_evidence.json  -- Generated by --test run
+
+connectors/bright_connection/tally.py  -- Upgraded TallyPrime 6.1 connector
+```
+
+---
+
+## Next Steps
+
+1. Set `"test_mode": false` in `bridge_config.json` when running on the actual LAN
+2. Set `"Companies to load on startup"` in TallyPrime to the active company
+3. Replace `setu.endpoint` and `setu.api_key` with actual SETU ingest credentials
+4. Deploy bridge agent on the Tally machine or any LAN machine
+5. Run `python agent.py --test` on the LAN to confirm live connectivity
+6. Switch to continuous sync: `python agent.py --config bridge_config.json`

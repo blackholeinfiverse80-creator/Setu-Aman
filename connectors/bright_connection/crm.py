@@ -2,13 +2,20 @@
 Bright Connection CRM Connector
 Normalizes leads, contacts, and visit data from Bright CRM into MDURecord.
 No business logic — field mapping only.
+
+Real API: HTTP GET {base_url}/{entity_type} with Bearer token.
+Fallback: stub data when SETU_CRM_OAUTH_TOKEN not set.
 """
 from __future__ import annotations
 
+import urllib.error
+import urllib.request
+import json as _json
 from typing import Any, Dict, List, Optional
 
 from connector_sdk.base_connector import BaseConnector, ConnectorCategory, ConnectorManifest
 from connector_sdk.mdu_schema import MDUEntityType, MDURecord
+from connectors.bright_connection.auth import is_stub_mode
 
 
 class BrightCRMConnector(BaseConnector):
@@ -40,10 +47,12 @@ class BrightCRMConnector(BaseConnector):
     async def authenticate(self) -> bool:
         token = self._config.get("oauth_token")
         if not token:
-            raise ValueError("bright_crm connector requires oauth_token in config")
+            raise ValueError("bright_crm requires oauth_token — set SETU_CRM_OAUTH_TOKEN")
         return True
 
     async def fetch_data(self, entity_type: str, params: Optional[Dict[str, Any]] = None) -> List[Dict[str, Any]]:
+        if not is_stub_mode(self._config) and self._config.get("base_url"):
+            return self._fetch_real(entity_type, params or {})
         stubs = {
             MDUEntityType.VISIT.value: [
                 {
@@ -92,6 +101,21 @@ class BrightCRMConnector(BaseConnector):
             ],
         }
         return stubs.get(entity_type, [])
+
+    def _fetch_real(self, entity_type: str, params: Dict[str, Any]) -> List[Dict[str, Any]]:
+        base_url = self._config["base_url"].rstrip("/")
+        token = self._config["oauth_token"]
+        req = urllib.request.Request(
+            f"{base_url}/{entity_type}",
+            headers={"Authorization": f"Bearer {token}", "Accept": "application/json"},
+        )
+        try:
+            with urllib.request.urlopen(req, timeout=30) as resp:
+                return _json.loads(resp.read().decode())
+        except urllib.error.HTTPError as e:
+            raise RuntimeError(f"bright_crm API error {e.code}: {e.reason}")
+        except Exception as e:
+            raise RuntimeError(f"bright_crm fetch failed: {e}")
 
     def normalize(self, raw_record: Dict[str, Any], entity_type: str) -> MDURecord:
         trace_id = self._config.get("trace_id", f"trace_{self.tenant_id}_crm")

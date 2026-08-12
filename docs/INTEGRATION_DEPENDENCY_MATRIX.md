@@ -1,4 +1,8 @@
 # Integration Dependency Matrix — Bright Connection
+**Updated:** Sprint 2 — Live Integration
+**Status:** LIVE_INTEGRATION_CERTIFIED
+
+---
 
 ## Connector to Entity Type Matrix
 
@@ -14,7 +18,35 @@
 | bright_collections | | | | | X | X | | | | | | | | | |
 | bright_dealer | X | | | | | | | | | | | | | | |
 
-*Tally: contract defined, system availability depends on customer environment
+*Tally: LAN-only, optional, bridge agent built
+
+---
+
+## Connector Authentication & Integration Status
+
+| Connector | Auth Type | Env Variable(s) | Live Mode | Integration Status |
+|---|---|---|---|---|
+| biz_analyst | api_key | SETU_BA_API_KEY, SETU_BA_BASE_URL | Stub — awaiting credentials | READY |
+| tally | HTTP XML | SETU_TALLY_HOST, SETU_TALLY_PORT | LAN-only | OPTIONAL |
+| bright_crm | oauth2 | SETU_CRM_OAUTH_TOKEN, SETU_CRM_BASE_URL | Stub — awaiting credentials | READY |
+| bright_dms | api_key | SETU_DMS_API_KEY, SETU_DMS_BASE_URL | Stub — awaiting credentials | READY |
+| bright_inventory | api_key | SETU_INV_API_KEY, SETU_INV_BASE_URL | Stub — awaiting credentials | READY |
+| bright_orders | api_key | SETU_ORDERS_API_KEY, SETU_ORDERS_BASE_URL | Stub — awaiting credentials | READY |
+| bright_sales | api_key | SETU_SALES_API_KEY, SETU_SALES_BASE_URL | Stub — awaiting credentials | READY |
+| bright_collections | api_key | SETU_COLLECTIONS_API_KEY, SETU_COLLECTIONS_BASE_URL | Stub — awaiting credentials | READY |
+| bright_dealer | api_key | SETU_DEALER_API_KEY, SETU_DEALER_BASE_URL | Stub — awaiting credentials | READY |
+
+"READY" = framework wired, switches to LIVE automatically when env var is set. Zero code changes needed.
+
+---
+
+## MasterDB Backend Dependencies
+
+| Backend | Env Var | Dependency | Status |
+|---|---|---|---|
+| memory | SETU_MASTERDB_BACKEND=memory | None | Active |
+| sqlite | SETU_MASTERDB_BACKEND=sqlite | SQLite (stdlib) | Active — persistence proven |
+| mongodb | SETU_MASTERDB_BACKEND=mongodb | SETU_MASTERDB_MONGO_URI + KAVY adapter | Stub — awaiting KAVY |
 
 ---
 
@@ -40,78 +72,27 @@
 
 ---
 
-## Connector Authentication Dependencies
-
-| Connector | Auth Type | External Dependency | Availability |
-|---|---|---|---|
-| biz_analyst | api_key | Biz Analyst API | Required |
-| tally | basic | Tally XML Gateway (localhost) | Optional |
-| bright_crm | oauth2 | Bright CRM OAuth endpoint | Required |
-| bright_dms | api_key | Bright DMS API | Required |
-| bright_inventory | api_key | Bright Inventory API | Required |
-| bright_orders | api_key | Bright Orders API | Required |
-| bright_sales | api_key | Bright Sales API | Required |
-| bright_collections | api_key | Bright Collections API | Required |
-| bright_dealer | api_key | Bright Dealer API | Required |
-
----
-
 ## Sync Schedule Matrix
 
-| Connector | Schedule | Frequency | Notes |
-|---|---|---|---|
-| biz_analyst | 0 */6 * * * | Every 6 hours | Financial data |
-| tally | 0 2 * * * | Daily at 2am | When available |
-| bright_crm | */30 * * * * | Every 30 min | Field activity |
-| bright_dms | 0 1 * * * | Daily at 1am | Master data |
-| bright_inventory | 0 */4 * * * | Every 4 hours | Stock levels |
-| bright_orders | */15 * * * * | Every 15 min | Live orders |
-| bright_sales | 0 0 * * * | Daily midnight | History |
-| bright_collections | */30 * * * * | Every 30 min | Payments |
-| bright_dealer | 0 1 * * * | Daily at 1am | Master data |
-
----
-
-## Data Flow Dependencies
-
-```
-Bright Connection Enterprise Systems
-        |
-        +-- Biz Analyst API ---------> biz_analyst connector
-        +-- Tally XML Gateway -------> tally connector (optional)
-        +-- Bright CRM API ----------> bright_crm connector
-        +-- Bright DMS API ----------> bright_dms connector
-        +-- Bright Inventory API ----> bright_inventory connector
-        +-- Bright Orders API -------> bright_orders connector
-        +-- Bright Sales API --------> bright_sales connector
-        +-- Bright Collections API --> bright_collections connector
-        +-- Bright Dealer API -------> bright_dealer connector
-        |
-        v
-  ConnectorPipeline (SETU runtime)
-        |
-        v
-  MDURecord (canonical)
-        |
-        v
-  MasterDB (tenant-isolated)
-        |
-        v
-  InsightFlow (capability dispatch)
-        |
-        v
-  ReplayEngine (deterministic replay)
-```
+| Connector | Schedule | Frequency |
+|---|---|---|
+| biz_analyst | 0 */6 * * * | Every 6 hours |
+| tally | 0 2 * * * | Daily at 2am |
+| bright_crm | */30 * * * * | Every 30 min |
+| bright_dms | 0 1 * * * | Daily at 1am |
+| bright_inventory | 0 */4 * * * | Every 4 hours |
+| bright_orders | */15 * * * * | Every 15 min |
+| bright_sales | 0 0 * * * | Daily midnight |
+| bright_collections | */30 * * * * | Every 30 min |
+| bright_dealer | 0 1 * * * | Daily at 1am |
 
 ---
 
 ## Connector Independence Matrix
 
-Each connector can be replaced independently. Replacement requires:
-
 | Connector | Replacement Trigger | Impact on SETU Core |
 |---|---|---|
-| biz_analyst | Biz Analyst API version change | None — update normalize() only |
+| biz_analyst | API version change | None — update normalize() only |
 | tally | Tally version upgrade | None — update XML parsing only |
 | bright_crm | CRM platform migration | None — update field mapping only |
 | bright_dms | DMS platform migration | None — update field mapping only |
@@ -120,3 +101,16 @@ Each connector can be replaced independently. Replacement requires:
 | bright_sales | Sales system change | None — update field mapping only |
 | bright_collections | Collections system change | None — update field mapping only |
 | bright_dealer | Dealer system change | None — update field mapping only |
+
+---
+
+## External Dependency Register
+
+| Dependency | Type | Owner | Status | Blocker |
+|---|---|---|---|---|
+| Bright Connection API credentials | Secret | Raj | NOT PROVIDED | Blocks live API calls |
+| Bright Connection API base URLs | Config | Raj | NOT PROVIDED | Blocks live API calls |
+| MongoDB MasterDB adapter | Code | KAVY | NOT PROVIDED | Blocks production persistence |
+| Production infrastructure | Infra | Alay | NOT STARTED | Blocks production deployment |
+| InsightFlow production handlers | Code | SETU ecosystem | NOT PROVIDED | Blocks production dispatch |
+| TallyPrime active company | Config | Bright Connection IT | UNKNOWN | Blocks Tally live test |

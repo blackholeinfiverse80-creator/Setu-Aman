@@ -2,13 +2,20 @@
 Bright Connection Dealer Connector
 Normalizes dealer master and dealer hierarchy data into MDURecord.
 No business logic — field mapping only.
+
+Real API: HTTP GET {base_url}/dealers with X-API-Key header.
+Fallback: stub data when SETU_DEALER_API_KEY not set.
 """
 from __future__ import annotations
 
+import urllib.error
+import urllib.request
+import json as _json
 from typing import Any, Dict, List, Optional
 
 from connector_sdk.base_connector import BaseConnector, ConnectorCategory, ConnectorManifest
 from connector_sdk.mdu_schema import MDUEntityType, MDURecord
+from connectors.bright_connection.auth import is_stub_mode
 
 
 class BrightDealerConnector(BaseConnector):
@@ -33,10 +40,12 @@ class BrightDealerConnector(BaseConnector):
 
     async def authenticate(self) -> bool:
         if not self._config.get("api_key"):
-            raise ValueError("bright_dealer requires api_key in config")
+            raise ValueError("bright_dealer requires api_key — set SETU_DEALER_API_KEY")
         return True
 
     async def fetch_data(self, entity_type: str, params: Optional[Dict[str, Any]] = None) -> List[Dict[str, Any]]:
+        if not is_stub_mode(self._config) and self._config.get("base_url"):
+            return self._fetch_real(entity_type, params or {})
         stubs = {
             MDUEntityType.DEALER.value: [
                 {
@@ -65,6 +74,21 @@ class BrightDealerConnector(BaseConnector):
             ],
         }
         return stubs.get(entity_type, [])
+
+    def _fetch_real(self, entity_type: str, params: Dict[str, Any]) -> List[Dict[str, Any]]:
+        base_url = self._config["base_url"].rstrip("/")
+        api_key = self._config["api_key"]
+        req = urllib.request.Request(
+            f"{base_url}/{entity_type}",
+            headers={"X-API-Key": api_key, "Accept": "application/json"},
+        )
+        try:
+            with urllib.request.urlopen(req, timeout=30) as resp:
+                return _json.loads(resp.read().decode())
+        except urllib.error.HTTPError as e:
+            raise RuntimeError(f"bright_dealer API error {e.code}: {e.reason}")
+        except Exception as e:
+            raise RuntimeError(f"bright_dealer fetch failed: {e}")
 
     def normalize(self, raw_record: Dict[str, Any], entity_type: str) -> MDURecord:
         trace_id = self._config.get("trace_id", f"trace_{self.tenant_id}_dealer")

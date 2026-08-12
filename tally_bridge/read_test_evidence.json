@@ -1,0 +1,120 @@
+{
+  "test_run_at": "2026-08-11T15:53:06.166092+00:00",
+  "tenant_id": "tenant_bright_connection_001",
+  "tally_host": "192.168.0.72",
+  "tally_port": 9000,
+  "records_normalized": 5,
+  "records": [
+    {
+      "entity_type": "ledger",
+      "entity_id": "TALLY-LED-SUNRISE_DISTRIBUTORS",
+      "tenant_id": "tenant_bright_connection_001",
+      "source_connector": "tally",
+      "canonical_data": {
+        "ledger_id": "TALLY-LED-SUNRISE_DISTRIBUTORS",
+        "ledger_name": "Sunrise Distributors",
+        "group": "Sundry Debtors",
+        "opening_balance": 10000.0,
+        "closing_balance": 35000.0,
+        "currency": "INR"
+      },
+      "trace_id": "trace_tenant_bright_connection_001_tally",
+      "schema_version": "1.0",
+      "raw_ref": "Sunrise Distributors",
+      "ingested_at": "2026-08-11T15:53:06.161823+00:00",
+      "idempotency_key": "8e12f7dde6f46bbd494307cebd0a6e3d",
+      "integrity_hash": "53b82fec0668c22f32c5f1fb5045cf9ccb6b6e09101a708b03268fe6b2bc63db",
+      "tags": [],
+      "metadata": {}
+    },
+    {
+      "entity_type": "ledger",
+      "entity_id": "TALLY-LED-APEX_RETAILERS",
+      "tenant_id": "tenant_bright_connection_001",
+      "source_connector": "tally",
+      "canonical_data": {
+        "ledger_id": "TALLY-LED-APEX_RETAILERS",
+        "ledger_name": "Apex Retailers",
+        "group": "Sundry Debtors",
+        "opening_balance": 5000.0,
+        "closing_balance": 18500.0,
+        "currency": "INR"
+      },
+      "trace_id": "trace_tenant_bright_connection_001_tally",
+      "schema_version": "1.0",
+      "raw_ref": "Apex Retailers",
+      "ingested_at": "2026-08-11T15:53:06.162538+00:00",
+      "idempotency_key": "20a25de7d68b0e9f2d1e0bfc61355cde",
+      "integrity_hash": "e6535de101c7debfad72d97fcf22b7d5651d77ee113309e77436c3d536ccb471",
+      "tags": [],
+      "metadata": {}
+    },
+    {
+      "entity_type": "invoice",
+      "entity_id": "TV-2025-001",
+      "tenant_id": "tenant_bright_connection_001",
+      "source_connector": "tally",
+      "canonical_data": {
+        "invoice_id": "TV-2025-001",
+        "voucher_type": "Sales",
+        "customer_name": "Sunrise Distributors",
+        "invoice_date": "2025-01-15",
+        "total_amount": 45000.0,
+        "narration": "Sales invoice Jan 2025",
+        "currency": "INR"
+      },
+      "trace_id": "trace_tenant_bright_connection_001_tally",
+      "schema_version": "1.0",
+      "raw_ref": "TV-2025-001",
+      "ingested_at": "2026-08-11T15:53:06.164311+00:00",
+      "idempotency_key": "f3fe8041da47ec374e2d26b4b8e86177",
+      "integrity_hash": "f730a0d65fb63d561ea86b12b9478b7e298b34fa8e59b941e85167593ef6d4d1",
+      "tags": [],
+      "metadata": {}
+    },
+    {
+      "entity_type": "payment",
+      "entity_id": "TV-2025-002",
+      "tenant_id": "tenant_bright_connection_001",
+      "source_connector": "tally",
+      "canonical_data": {
+        "payment_id": "TV-2025-002",
+        "voucher_type": "Receipt",
+        "party_name": "Sunrise Distributors",
+        "payment_date": "2025-01-20",
+        "amount": 20000.0,
+        "narration": "Payment received",
+        "currency": "INR"
+      },
+      "trace_id": "trace_tenant_bright_connection_001_tally",
+      "schema_version": "1.0",
+      "raw_ref": "TV-2025-002",
+      "ingested_at": "2026-08-11T15:53:06.164464+00:00",
+      "idempotency_key": "4058500424eef4dbc034d26627bf75bc",
+      "integrity_hash": "e2800dfba71b5b0b55f88505ab3d0ecaca17523a0fed33d724220a3726a48cd8",
+      "tags": [],
+      "metadata": {}
+    },
+    {
+      "entity_type": "outstanding",
+      "entity_id": "TALLY-OUT-SUNRISE_DISTRIBUTORS",
+      "tenant_id": "tenant_bright_connection_001",
+      "source_connector": "tally",
+      "canonical_data": {
+        "outstanding_id": "TALLY-OUT-SUNRISE_DISTRIBUTORS",
+        "customer_name": "Sunrise Distributors",
+        "outstanding_amount": 25000.0,
+        "due_date": "2025-02-17",
+        "currency": "INR"
+      },
+      "trace_id": "trace_tenant_bright_connection_001_tally",
+      "schema_version": "1.0",
+      "raw_ref": "Sunrise Distributors",
+      "ingested_at": "2026-08-11T15:53:06.164569+00:00",
+      "idempotency_key": "cd93e041749b955cd3cfb1aab52bdd0b",
+      "integrity_hash": "3373a91e2dd30dcc0736f15a43ce0d2c8fea58bfadc36188c26c79f82596f273",
+      "tags": [],
+      "metadata": {}
+    }
+  ]
+}
