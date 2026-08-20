@@ -23,6 +23,7 @@ from datetime import datetime, timezone
 
 from connector_sdk.base_connector import BaseConnector, ConnectorCategory, ConnectorManifest
 from connector_sdk.mdu_schema import MDUEntityType, MDURecord
+from connector_sdk.provenance import build_source_context, extract_company_from_ping, validate_source_context
 
 
 # TDL XML request templates for TallyPrime 6.1
@@ -92,6 +93,10 @@ _OUTSTANDING_REQUEST_XML = """<ENVELOPE>
 
 class TallyConnector(BaseConnector):
     _connector_id = "tally"
+
+    def __init__(self, tenant_id: str, config: dict):
+        super().__init__(tenant_id, config)
+        self._company_context: dict = {}  # instance-level, populated on authenticate()
 
     @property
     def manifest(self) -> ConnectorManifest:
@@ -231,13 +236,16 @@ class TallyConnector(BaseConnector):
     async def authenticate(self) -> bool:
         """
         Ping TallyPrime gateway with a lightweight company list request.
+        Also extracts connected company name/ID for source_context envelope.
         TallyPrime XML gateway has no auth — connectivity check is sufficient.
         """
         try:
             response_xml = self._post_xml(_TALLY_PING_XML)
             root = ET.fromstring(response_xml)
-            # Any valid XML envelope from Tally confirms the gateway is alive
             if root.tag == "ENVELOPE":
+                # Only update company context if not already set externally
+                if not self._company_context:
+                    self._company_context = extract_company_from_ping(response_xml)
                 return True
             raise ConnectionError("Unexpected response from Tally gateway")
         except ET.ParseError as e:
@@ -391,6 +399,32 @@ class TallyConnector(BaseConnector):
             canonical = raw_record
             entity_id = raw_record.get("tally_voucher_no") or raw_record.get("tally_ledger_name", "unknown")
 
+        # Build source_context envelope — explicit provenance for every Tally record
+        store_id = self._config.get("store_id")
+        store_name = self._config.get("store_name")
+        location_identifier = self._config.get("location_identifier")
+        # If store not configured, mark explicitly as UNAVAILABLE (not invented)
+        pending = self._company_context.get("pending_live_confirmation", True) or not store_id
+
+        source_context = build_source_context(
+            connected_company_id=self._company_context.get("company_id"),
+            connected_company_name=self._company_context.get("company_name"),
+            store_id=store_id,
+            store_name=store_name,
+            location_identifier=location_identifier,
+            source_entity=entity_type,
+            source_record_id=entity_id,
+            source_timestamp=(
+                canonical.get("invoice_date")
+                or canonical.get("payment_date")
+                or canonical.get("due_date")
+            ),
+            sync_id=self._config.get("trace_id"),
+            pending_live_confirmation=pending,
+        )
+
+        validation = validate_source_context(source_context)
+
         return MDURecord(
             entity_type=MDUEntityType(entity_type),
             entity_id=entity_id,
@@ -399,4 +433,8 @@ class TallyConnector(BaseConnector):
             canonical_data=canonical,
             trace_id=trace_id,
             raw_ref=str(raw_record.get("tally_voucher_no") or raw_record.get("tally_ledger_name", "")),
+            metadata={
+                "source_context": source_context,
+                "source_context_validation": validation,
+            },
         )

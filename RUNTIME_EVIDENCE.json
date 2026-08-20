@@ -1,7 +1,7 @@
 {
-  "validation_id": "val_20260812_155527",
+  "validation_id": "val_20260820_150109",
   "tenant_id": "tenant_bright_connection_001",
-  "started_at": "2026-08-12T15:55:27.741012+00:00",
+  "started_at": "2026-08-20T15:01:09.148333+00:00",
   "checks": [
     {
       "check": "Register biz_analyst",
@@ -231,19 +231,19 @@
   ],
   "pipeline_results": [
     {
-      "trace_id": "trace_tenant_bright_connection_001_9a4acfa1449a",
+      "trace_id": "trace_tenant_bright_connection_001_bf26f14db914",
       "tenant_id": "tenant_bright_connection_001",
       "connector_id": "biz_analyst",
       "records_ingested": 3,
       "records_failed": 0,
       "events": [
         {
-          "event_id": "evt_c492b8971cbb4c88",
+          "event_id": "evt_ab52a660adc54fc9",
           "event_type": "sync_started",
           "connector_id": "biz_analyst",
           "tenant_id": "tenant_bright_connection_001",
-          "trace_id": "trace_tenant_bright_connection_001_9a4acfa1449a",
-          "timestamp": "2026-08-12T15:55:27.743831+00:00",
+          "trace_id": "trace_tenant_bright_connection_001_bf26f14db914",
+          "timestamp": "2026-08-20T15:01:09.151150+00:00",
           "payload": {
             "entity_types": [
               "order",
@@ -254,12 +254,12 @@
           "schema_version": "1.0"
         },
         {
-          "event_id": "evt_2f70e0f2c4c14d05",
+          "event_id": "evt_19c6f747531b4f1c",
           "event_type": "data_received",
           "connector_id": "biz_analyst",
           "tenant_id": "tenant_bright_connection_001",
-          "trace_id": "trace_tenant_bright_connection_001_9a4acfa1449a",
-          "timestamp": "2026-08-12T15:55:27.744013+00:00",
+          "trace_id": "trace_tenant_bright_connection_001_bf26f14db914",
+          "timestamp": "2026-08-20T15:01:09.151340+00:00",
           "payload": {
             "entity_type": "order",
             "count": 1
@@ -267,12 +267,12 @@
           "schema_version": "1.0"
         },
         {
-          "event_id": "evt_585d282675314b3f",
+          "event_id": "evt_bec22b9864d942a9",
           "event_type": "data_received",
           "connector_id": "biz_analyst",
           "tenant_id": "tenant_bright_connection_001",
-          "trace_id": "trace_tenant_bright_connection_001_9a4acfa1449a",
-          "timestamp": "2026-08-12T15:55:27.744063+00:00",
+          "trace_id": "trace_tenant_bright_connection_001_bf26f14db914",
+          "timestamp": "2026-08-20T15:01:09.151391+00:00",
           "payload": {
             "entity_type": "collection",
             "count": 1
@@ -280,12 +280,12 @@
           "schema_version": "1.0"
         },
         {
-          "event_id": "evt_8d35af9156f04242",
+          "event_id": "evt_6ea75f0f967340dc",
           "event_type": "data_received",
           "connector_id": "biz_analyst",
           "tenant_id": "tenant_bright_connection_001",
-          "trace_id": "trace_tenant_bright_connection_001_9a4acfa1449a",
-          "timestamp": "2026-08-12T15:55:27.744099+00:00",
+          "trace_id": "trace_tenant_bright_connection_001_bf26f14db914",
+          "timestamp": "2026-08-20T15:01:09.151427+00:00",
           "payload": {
             "entity_type": "outstanding",
             "count": 1
@@ -293,12 +293,12 @@
           "schema_version": "1.0"
         },
         {
-          "event_id": "evt_0fc8419188264457",
+          "event_id": "evt_ecb4eb3e82cc4367",
           "event_type": "sync_completed",
           "connector_id": "biz_analyst",
           "tenant_id": "tenant_bright_connection_001",
-          "trace_id": "trace_tenant_bright_connection_001_9a4acfa1449a",
-          "timestamp": "2026-08-12T15:55:27.744115+00:00",
+          "trace_id": "trace_tenant_bright_connection_001_bf26f14db914",
+          "timestamp": "2026-08-20T15:01:09.151442+00:00",
           "payload": {
             "records_ingested": 3,
             "records_failed": 0
@@ -312,22 +312,22 @@
         "db38a1d51fae5777fee45bb329fe03c7",
         "8fd2ae101f9490c8bd473ba70c876fdb"
       ],
-      "completed_at": "2026-08-12T15:55:27.744104+00:00"
+      "completed_at": "2026-08-20T15:01:09.151431+00:00"
     },
     {
-      "trace_id": "trace_tenant_bright_connection_001_3c133714b066",
+      "trace_id": "trace_tenant_bright_connection_001_7350aa673dfb",
       "tenant_id": "tenant_bright_connection_001",
       "connector_id": "bright_crm",
       "records_ingested": 4,
       "records_failed": 0,
       "events": [
         {
-          "event_id": "evt_8360bc06f7674652",
+          "event_id": "evt_9de4ab6154f94a11",
           "event_type": "sync_started",
           "connector_id": "bright_crm",
           "tenant_id": "tenant_bright_connection_001",
-          "trace_id": "trace_tenant_bright_connection_001_3c133714b066",
-          "timestamp": "2026-08-12T15:55:27.744153+00:00",
+          "trace_id": "trace_tenant_bright_connection_001_7350aa673dfb",
+          "timestamp": "2026-08-20T15:01:09.151484+00:00",
           "payload": {
             "entity_types": [
               "visit",
@@ -339,12 +339,12 @@
           "schema_version": "1.0"
         },
         {
-          "event_id": "evt_f1120a2c6bbc4cf3",
+          "event_id": "evt_0656bf612bcd4607",
           "event_type": "data_received",
           "connector_id": "bright_crm",
           "tenant_id": "tenant_bright_connection_001",
-          "trace_id": "trace_tenant_bright_connection_001_3c133714b066",
-          "timestamp": "2026-08-12T15:55:27.744206+00:00",
+          "trace_id": "trace_tenant_bright_connection_001_7350aa673dfb",
+          "timestamp": "2026-08-20T15:01:09.151536+00:00",
           "payload": {
             "entity_type": "visit",
             "count": 1
@@ -352,12 +352,12 @@
           "schema_version": "1.0"
         },
         {
-          "event_id": "evt_ae46127f8a514d27",
+          "event_id": "evt_81431845c9874ba8",
           "event_type": "data_received",
           "connector_id": "bright_crm",
           "tenant_id": "tenant_bright_connection_001",
-          "trace_id": "trace_tenant_bright_connection_001_3c133714b066",
-          "timestamp": "2026-08-12T15:55:27.744242+00:00",
+          "trace_id": "trace_tenant_bright_connection_001_7350aa673dfb",
+          "timestamp": "2026-08-20T15:01:09.151574+00:00",
           "payload": {
             "entity_type": "beat_plan",
             "count": 1
@@ -365,12 +365,12 @@
           "schema_version": "1.0"
         },
         {
-          "event_id": "evt_4d7908ffbde4433c",
+          "event_id": "evt_e0b0434263244413",
           "event_type": "data_received",
           "connector_id": "bright_crm",
           "tenant_id": "tenant_bright_connection_001",
-          "trace_id": "trace_tenant_bright_connection_001_3c133714b066",
-          "timestamp": "2026-08-12T15:55:27.744276+00:00",
+          "trace_id": "trace_tenant_bright_connection_001_7350aa673dfb",
+          "timestamp": "2026-08-20T15:01:09.151610+00:00",
           "payload": {
             "entity_type": "route_plan",
             "count": 1
@@ -378,12 +378,12 @@
           "schema_version": "1.0"
         },
         {
-          "event_id": "evt_eef9f1f87ef94560",
+          "event_id": "evt_5b964d855f324bef",
           "event_type": "data_received",
           "connector_id": "bright_crm",
           "tenant_id": "tenant_bright_connection_001",
-          "trace_id": "trace_tenant_bright_connection_001_3c133714b066",
-          "timestamp": "2026-08-12T15:55:27.744311+00:00",
+          "trace_id": "trace_tenant_bright_connection_001_7350aa673dfb",
+          "timestamp": "2026-08-20T15:01:09.151645+00:00",
           "payload": {
             "entity_type": "display_compliance",
             "count": 1
@@ -391,12 +391,12 @@
           "schema_version": "1.0"
         },
         {
-          "event_id": "evt_f79f802747924301",
+          "event_id": "evt_76e69285dc494e7e",
           "event_type": "sync_completed",
           "connector_id": "bright_crm",
           "tenant_id": "tenant_bright_connection_001",
-          "trace_id": "trace_tenant_bright_connection_001_3c133714b066",
-          "timestamp": "2026-08-12T15:55:27.744326+00:00",
+          "trace_id": "trace_tenant_bright_connection_001_7350aa673dfb",
+          "timestamp": "2026-08-20T15:01:09.151660+00:00",
           "payload": {
             "records_ingested": 4,
             "records_failed": 0
@@ -411,22 +411,22 @@
         "7be3a793a8bea15f5ffc53acfbaf8196",
         "fd855af9bb868a610a7ea84520b09356"
       ],
-      "completed_at": "2026-08-12T15:55:27.744315+00:00"
+      "completed_at": "2026-08-20T15:01:09.151650+00:00"
     },
     {
-      "trace_id": "trace_tenant_bright_connection_001_710a8ac2bce1",
+      "trace_id": "trace_tenant_bright_connection_001_f6397b197471",
       "tenant_id": "tenant_bright_connection_001",
       "connector_id": "bright_dms",
       "records_ingested": 3,
       "records_failed": 0,
       "events": [
         {
-          "event_id": "evt_590d7ef0420448aa",
+          "event_id": "evt_ecc87b473fca42e1",
           "event_type": "sync_started",
           "connector_id": "bright_dms",
           "tenant_id": "tenant_bright_connection_001",
-          "trace_id": "trace_tenant_bright_connection_001_710a8ac2bce1",
-          "timestamp": "2026-08-12T15:55:27.744352+00:00",
+          "trace_id": "trace_tenant_bright_connection_001_f6397b197471",
+          "timestamp": "2026-08-20T15:01:09.151688+00:00",
           "payload": {
             "entity_types": [
               "dealer",
@@ -437,12 +437,12 @@
           "schema_version": "1.0"
         },
         {
-          "event_id": "evt_61e02d811ccc47a9",
+          "event_id": "evt_1b40619e6f324d8d",
           "event_type": "data_received",
           "connector_id": "bright_dms",
           "tenant_id": "tenant_bright_connection_001",
-          "trace_id": "trace_tenant_bright_connection_001_710a8ac2bce1",
-          "timestamp": "2026-08-12T15:55:27.744396+00:00",
+          "trace_id": "trace_tenant_bright_connection_001_f6397b197471",
+          "timestamp": "2026-08-20T15:01:09.151733+00:00",
           "payload": {
             "entity_type": "dealer",
             "count": 1
@@ -450,12 +450,12 @@
           "schema_version": "1.0"
         },
         {
-          "event_id": "evt_bda9806d3ea042ab",
+          "event_id": "evt_9719852412a648c9",
           "event_type": "data_received",
           "connector_id": "bright_dms",
           "tenant_id": "tenant_bright_connection_001",
-          "trace_id": "trace_tenant_bright_connection_001_710a8ac2bce1",
-          "timestamp": "2026-08-12T15:55:27.744430+00:00",
+          "trace_id": "trace_tenant_bright_connection_001_f6397b197471",
+          "timestamp": "2026-08-20T15:01:09.151818+00:00",
           "payload": {
             "entity_type": "scheme",
             "count": 1
@@ -463,12 +463,12 @@
           "schema_version": "1.0"
         },
         {
-          "event_id": "evt_27b4daff629241f5",
+          "event_id": "evt_187d01984e07439d",
           "event_type": "data_received",
           "connector_id": "bright_dms",
           "tenant_id": "tenant_bright_connection_001",
-          "trace_id": "trace_tenant_bright_connection_001_710a8ac2bce1",
-          "timestamp": "2026-08-12T15:55:27.744463+00:00",
+          "trace_id": "trace_tenant_bright_connection_001_f6397b197471",
+          "timestamp": "2026-08-20T15:01:09.151850+00:00",
           "payload": {
             "entity_type": "product_catalogue",
             "count": 1
@@ -476,12 +476,12 @@
           "schema_version": "1.0"
         },
         {
-          "event_id": "evt_04483cd6a83242ad",
+          "event_id": "evt_809b136e47d04bf9",
           "event_type": "sync_completed",
           "connector_id": "bright_dms",
           "tenant_id": "tenant_bright_connection_001",
-          "trace_id": "trace_tenant_bright_connection_001_710a8ac2bce1",
-          "timestamp": "2026-08-12T15:55:27.744475+00:00",
+          "trace_id": "trace_tenant_bright_connection_001_f6397b197471",
+          "timestamp": "2026-08-20T15:01:09.151862+00:00",
           "payload": {
             "records_ingested": 3,
             "records_failed": 0
@@ -495,22 +495,22 @@
         "5b21f5c29977232416ebf322c5d8c28d",
         "705de6a577a194dd33de44fe7c031a7a"
       ],
-      "completed_at": "2026-08-12T15:55:27.744466+00:00"
+      "completed_at": "2026-08-20T15:01:09.151855+00:00"
     },
     {
-      "trace_id": "trace_tenant_bright_connection_001_271df150d9a3",
+      "trace_id": "trace_tenant_bright_connection_001_427070749de5",
       "tenant_id": "tenant_bright_connection_001",
       "connector_id": "bright_inventory",
       "records_ingested": 2,
       "records_failed": 0,
       "events": [
         {
-          "event_id": "evt_4786f72153fb43e6",
+          "event_id": "evt_d66a2cfc3ed1443d",
           "event_type": "sync_started",
           "connector_id": "bright_inventory",
           "tenant_id": "tenant_bright_connection_001",
-          "trace_id": "trace_tenant_bright_connection_001_271df150d9a3",
-          "timestamp": "2026-08-12T15:55:27.744499+00:00",
+          "trace_id": "trace_tenant_bright_connection_001_427070749de5",
+          "timestamp": "2026-08-20T15:01:09.151892+00:00",
           "payload": {
             "entity_types": [
               "inventory",
@@ -520,12 +520,12 @@
           "schema_version": "1.0"
         },
         {
-          "event_id": "evt_e8282fac55564f19",
+          "event_id": "evt_a3ea2344e0644b69",
           "event_type": "data_received",
           "connector_id": "bright_inventory",
           "tenant_id": "tenant_bright_connection_001",
-          "trace_id": "trace_tenant_bright_connection_001_271df150d9a3",
-          "timestamp": "2026-08-12T15:55:27.744539+00:00",
+          "trace_id": "trace_tenant_bright_connection_001_427070749de5",
+          "timestamp": "2026-08-20T15:01:09.151934+00:00",
           "payload": {
             "entity_type": "inventory",
             "count": 1
@@ -533,12 +533,12 @@
           "schema_version": "1.0"
         },
         {
-          "event_id": "evt_ae7ed6327afd41a0",
+          "event_id": "evt_9377936663234d91",
           "event_type": "data_received",
           "connector_id": "bright_inventory",
           "tenant_id": "tenant_bright_connection_001",
-          "trace_id": "trace_tenant_bright_connection_001_271df150d9a3",
-          "timestamp": "2026-08-12T15:55:27.744571+00:00",
+          "trace_id": "trace_tenant_bright_connection_001_427070749de5",
+          "timestamp": "2026-08-20T15:01:09.151968+00:00",
           "payload": {
             "entity_type": "damaged_goods",
             "count": 1
@@ -546,12 +546,12 @@
           "schema_version": "1.0"
         },
         {
-          "event_id": "evt_a7c6969005bc4dd5",
+          "event_id": "evt_f2c9f69e5e3c469c",
           "event_type": "sync_completed",
           "connector_id": "bright_inventory",
           "tenant_id": "tenant_bright_connection_001",
-          "trace_id": "trace_tenant_bright_connection_001_271df150d9a3",
-          "timestamp": "2026-08-12T15:55:27.744583+00:00",
+          "trace_id": "trace_tenant_bright_connection_001_427070749de5",
+          "timestamp": "2026-08-20T15:01:09.151989+00:00",
           "payload": {
             "records_ingested": 2,
             "records_failed": 0
@@ -564,22 +564,22 @@
         "e9fc42f4a79fa50186535bccec1086cd",
         "1f603d0db4208b5cf30d96eebec11fdb"
       ],
-      "completed_at": "2026-08-12T15:55:27.744575+00:00"
+      "completed_at": "2026-08-20T15:01:09.151971+00:00"
     },
     {
-      "trace_id": "trace_tenant_bright_connection_001_cbc7144bce6d",
+      "trace_id": "trace_tenant_bright_connection_001_5aca4e2ca0b9",
       "tenant_id": "tenant_bright_connection_001",
       "connector_id": "bright_orders",
       "records_ingested": 3,
       "records_failed": 0,
       "events": [
         {
-          "event_id": "evt_650b69473dcb4f31",
+          "event_id": "evt_93bd0289c35a47f2",
           "event_type": "sync_started",
           "connector_id": "bright_orders",
           "tenant_id": "tenant_bright_connection_001",
-          "trace_id": "trace_tenant_bright_connection_001_cbc7144bce6d",
-          "timestamp": "2026-08-12T15:55:27.744608+00:00",
+          "trace_id": "trace_tenant_bright_connection_001_5aca4e2ca0b9",
+          "timestamp": "2026-08-20T15:01:09.152020+00:00",
           "payload": {
             "entity_types": [
               "order",
@@ -590,12 +590,12 @@
           "schema_version": "1.0"
         },
         {
-          "event_id": "evt_668dcfe7ad244591",
+          "event_id": "evt_d2227d0e34204f55",
           "event_type": "data_received",
           "connector_id": "bright_orders",
           "tenant_id": "tenant_bright_connection_001",
-          "trace_id": "trace_tenant_bright_connection_001_cbc7144bce6d",
-          "timestamp": "2026-08-12T15:55:27.744651+00:00",
+          "trace_id": "trace_tenant_bright_connection_001_5aca4e2ca0b9",
+          "timestamp": "2026-08-20T15:01:09.152066+00:00",
           "payload": {
             "entity_type": "order",
             "count": 1
@@ -603,12 +603,12 @@
           "schema_version": "1.0"
         },
         {
-          "event_id": "evt_a21f06fe3765470b",
+          "event_id": "evt_ed876e6a70704f45",
           "event_type": "data_received",
           "connector_id": "bright_orders",
           "tenant_id": "tenant_bright_connection_001",
-          "trace_id": "trace_tenant_bright_connection_001_cbc7144bce6d",
-          "timestamp": "2026-08-12T15:55:27.744683+00:00",
+          "trace_id": "trace_tenant_bright_connection_001_5aca4e2ca0b9",
+          "timestamp": "2026-08-20T15:01:09.152100+00:00",
           "payload": {
             "entity_type": "invoice",
             "count": 1
@@ -616,12 +616,12 @@
           "schema_version": "1.0"
         },
         {
-          "event_id": "evt_5126e4542187467d",
+          "event_id": "evt_aa88a9e8878b4201",
           "event_type": "data_received",
           "connector_id": "bright_orders",
           "tenant_id": "tenant_bright_connection_001",
-          "trace_id": "trace_tenant_bright_connection_001_cbc7144bce6d",
-          "timestamp": "2026-08-12T15:55:27.744714+00:00",
+          "trace_id": "trace_tenant_bright_connection_001_5aca4e2ca0b9",
+          "timestamp": "2026-08-20T15:01:09.152131+00:00",
           "payload": {
             "entity_type": "payment_receipt",
             "count": 1
@@ -629,12 +629,12 @@
           "schema_version": "1.0"
         },
         {
-          "event_id": "evt_69c0c2bf3dc04084",
+          "event_id": "evt_024aff147cab49a6",
           "event_type": "sync_completed",
           "connector_id": "bright_orders",
           "tenant_id": "tenant_bright_connection_001",
-          "trace_id": "trace_tenant_bright_connection_001_cbc7144bce6d",
-          "timestamp": "2026-08-12T15:55:27.744725+00:00",
+          "trace_id": "trace_tenant_bright_connection_001_5aca4e2ca0b9",
+          "timestamp": "2026-08-20T15:01:09.152144+00:00",
           "payload": {
             "records_ingested": 3,
             "records_failed": 0
@@ -648,22 +648,22 @@
         "156aedcfe6699ca3e37f3f3e307f4dd9",
         "e763d58dcd048245623dbbca88c090ec"
       ],
-      "completed_at": "2026-08-12T15:55:27.744717+00:00"
+      "completed_at": "2026-08-20T15:01:09.152135+00:00"
     },
     {
-      "trace_id": "trace_tenant_bright_connection_001_2330a4106bf1",
+      "trace_id": "trace_tenant_bright_connection_001_1b894701350e",
       "tenant_id": "tenant_bright_connection_001",
       "connector_id": "bright_sales",
       "records_ingested": 1,
       "records_failed": 0,
       "events": [
         {
-          "event_id": "evt_1ed968fa26a249ae",
+          "event_id": "evt_b815108f7683470c",
           "event_type": "sync_started",
           "connector_id": "bright_sales",
           "tenant_id": "tenant_bright_connection_001",
-          "trace_id": "trace_tenant_bright_connection_001_2330a4106bf1",
-          "timestamp": "2026-08-12T15:55:27.744749+00:00",
+          "trace_id": "trace_tenant_bright_connection_001_1b894701350e",
+          "timestamp": "2026-08-20T15:01:09.152170+00:00",
           "payload": {
             "entity_types": [
               "order"
@@ -672,12 +672,12 @@
           "schema_version": "1.0"
         },
         {
-          "event_id": "evt_494736f4b9104d25",
+          "event_id": "evt_a09faaa197f34088",
           "event_type": "data_received",
           "connector_id": "bright_sales",
           "tenant_id": "tenant_bright_connection_001",
-          "trace_id": "trace_tenant_bright_connection_001_2330a4106bf1",
-          "timestamp": "2026-08-12T15:55:27.744785+00:00",
+          "trace_id": "trace_tenant_bright_connection_001_1b894701350e",
+          "timestamp": "2026-08-20T15:01:09.152207+00:00",
           "payload": {
             "entity_type": "order",
             "count": 1
@@ -685,12 +685,12 @@
           "schema_version": "1.0"
         },
         {
-          "event_id": "evt_43d764f7b09f4528",
+          "event_id": "evt_b81e06ee67984e0c",
           "event_type": "sync_completed",
           "connector_id": "bright_sales",
           "tenant_id": "tenant_bright_connection_001",
-          "trace_id": "trace_tenant_bright_connection_001_2330a4106bf1",
-          "timestamp": "2026-08-12T15:55:27.744796+00:00",
+          "trace_id": "trace_tenant_bright_connection_001_1b894701350e",
+          "timestamp": "2026-08-20T15:01:09.152219+00:00",
           "payload": {
             "records_ingested": 1,
             "records_failed": 0
@@ -702,22 +702,22 @@
       "replay_keys": [
         "783d62c9a73753c2c71a6f77b51e752d"
       ],
-      "completed_at": "2026-08-12T15:55:27.744789+00:00"
+      "completed_at": "2026-08-20T15:01:09.152211+00:00"
     },
     {
-      "trace_id": "trace_tenant_bright_connection_001_2a45e9bec6df",
+      "trace_id": "trace_tenant_bright_connection_001_8f73820dbe24",
       "tenant_id": "tenant_bright_connection_001",
       "connector_id": "bright_collections",
       "records_ingested": 2,
       "records_failed": 0,
       "events": [
         {
-          "event_id": "evt_3dcee2e15f3e4a7b",
+          "event_id": "evt_ebcc1ed6ae7e483f",
           "event_type": "sync_started",
           "connector_id": "bright_collections",
           "tenant_id": "tenant_bright_connection_001",
-          "trace_id": "trace_tenant_bright_connection_001_2a45e9bec6df",
-          "timestamp": "2026-08-12T15:55:27.744821+00:00",
+          "trace_id": "trace_tenant_bright_connection_001_8f73820dbe24",
+          "timestamp": "2026-08-20T15:01:09.152260+00:00",
           "payload": {
             "entity_types": [
               "collection",
@@ -727,12 +727,12 @@
           "schema_version": "1.0"
         },
         {
-          "event_id": "evt_812375590b26455c",
+          "event_id": "evt_a484b0ef8ed44e87",
           "event_type": "data_received",
           "connector_id": "bright_collections",
           "tenant_id": "tenant_bright_connection_001",
-          "trace_id": "trace_tenant_bright_connection_001_2a45e9bec6df",
-          "timestamp": "2026-08-12T15:55:27.744859+00:00",
+          "trace_id": "trace_tenant_bright_connection_001_8f73820dbe24",
+          "timestamp": "2026-08-20T15:01:09.152301+00:00",
           "payload": {
             "entity_type": "collection",
             "count": 1
@@ -740,12 +740,12 @@
           "schema_version": "1.0"
         },
         {
-          "event_id": "evt_1f9c1282aeef4a14",
+          "event_id": "evt_7eda4c3dd0194c6e",
           "event_type": "data_received",
           "connector_id": "bright_collections",
           "tenant_id": "tenant_bright_connection_001",
-          "trace_id": "trace_tenant_bright_connection_001_2a45e9bec6df",
-          "timestamp": "2026-08-12T15:55:27.744889+00:00",
+          "trace_id": "trace_tenant_bright_connection_001_8f73820dbe24",
+          "timestamp": "2026-08-20T15:01:09.152334+00:00",
           "payload": {
             "entity_type": "outstanding",
             "count": 1
@@ -753,12 +753,12 @@
           "schema_version": "1.0"
         },
         {
-          "event_id": "evt_14a9f28800c1478a",
+          "event_id": "evt_dc5c72bfc1464438",
           "event_type": "sync_completed",
           "connector_id": "bright_collections",
           "tenant_id": "tenant_bright_connection_001",
-          "trace_id": "trace_tenant_bright_connection_001_2a45e9bec6df",
-          "timestamp": "2026-08-12T15:55:27.744900+00:00",
+          "trace_id": "trace_tenant_bright_connection_001_8f73820dbe24",
+          "timestamp": "2026-08-20T15:01:09.152346+00:00",
           "payload": {
             "records_ingested": 2,
             "records_failed": 0
@@ -771,22 +771,22 @@
         "c5a8e18b4f8e68ec642b1501215a1b5e",
         "53c1185a1d8e303ef0126a024b2beb4a"
       ],
-      "completed_at": "2026-08-12T15:55:27.744892+00:00"
+      "completed_at": "2026-08-20T15:01:09.152337+00:00"
     },
     {
-      "trace_id": "trace_tenant_bright_connection_001_60ecc3e89f56",
+      "trace_id": "trace_tenant_bright_connection_001_e7779c7e7be7",
       "tenant_id": "tenant_bright_connection_001",
       "connector_id": "bright_dealer",
       "records_ingested": 1,
       "records_failed": 0,
       "events": [
         {
-          "event_id": "evt_c8502859de6542b6",
+          "event_id": "evt_f362f8800cef4dd5",
           "event_type": "sync_started",
           "connector_id": "bright_dealer",
           "tenant_id": "tenant_bright_connection_001",
-          "trace_id": "trace_tenant_bright_connection_001_60ecc3e89f56",
-          "timestamp": "2026-08-12T15:55:27.744921+00:00",
+          "trace_id": "trace_tenant_bright_connection_001_e7779c7e7be7",
+          "timestamp": "2026-08-20T15:01:09.152371+00:00",
           "payload": {
             "entity_types": [
               "dealer"
@@ -795,12 +795,12 @@
           "schema_version": "1.0"
         },
         {
-          "event_id": "evt_88cf17109da84d9e",
+          "event_id": "evt_06ec0fc8b19e44f8",
           "event_type": "data_received",
           "connector_id": "bright_dealer",
           "tenant_id": "tenant_bright_connection_001",
-          "trace_id": "trace_tenant_bright_connection_001_60ecc3e89f56",
-          "timestamp": "2026-08-12T15:55:27.744969+00:00",
+          "trace_id": "trace_tenant_bright_connection_001_e7779c7e7be7",
+          "timestamp": "2026-08-20T15:01:09.152419+00:00",
           "payload": {
             "entity_type": "dealer",
             "count": 1
@@ -808,12 +808,12 @@
           "schema_version": "1.0"
         },
         {
-          "event_id": "evt_f0453e8dd39e406d",
+          "event_id": "evt_a11b0bde40e04ef7",
           "event_type": "sync_completed",
           "connector_id": "bright_dealer",
           "tenant_id": "tenant_bright_connection_001",
-          "trace_id": "trace_tenant_bright_connection_001_60ecc3e89f56",
-          "timestamp": "2026-08-12T15:55:27.744981+00:00",
+          "trace_id": "trace_tenant_bright_connection_001_e7779c7e7be7",
+          "timestamp": "2026-08-20T15:01:09.152432+00:00",
           "payload": {
             "records_ingested": 1,
             "records_failed": 0
@@ -825,7 +825,7 @@
       "replay_keys": [
         "603b6c2d4f4e3a2498719fe7d87e9c9a"
       ],
-      "completed_at": "2026-08-12T15:55:27.744973+00:00"
+      "completed_at": "2026-08-20T15:01:09.152423+00:00"
     }
   ],
   "masterdb_snapshot": {
@@ -851,7 +851,7 @@
   },
   "replay_log": [
     {
-      "replayed_at": "2026-08-12T15:55:27.745066+00:00",
+      "replayed_at": "2026-08-20T15:01:09.152533+00:00",
       "tenant_id": "tenant_bright_connection_001",
       "idempotency_key": "fca781fac9e35ea3fd8f697b49db870f",
       "entity_type": "order",
@@ -859,7 +859,7 @@
       "integrity_hash": "b7e7570e0dbc9c0a3d685b6c4ee1f67303ef2a121574619d9db26c527fb4af71"
     },
     {
-      "replayed_at": "2026-08-12T15:55:27.745136+00:00",
+      "replayed_at": "2026-08-20T15:01:09.152602+00:00",
       "tenant_id": "tenant_bright_connection_001",
       "idempotency_key": "db38a1d51fae5777fee45bb329fe03c7",
       "entity_type": "collection",
@@ -867,7 +867,7 @@
       "integrity_hash": "c589cb4a6bd4060b0f500e747ff3a56bdb97dabe3030af63a409bbff5e270343"
     },
     {
-      "replayed_at": "2026-08-12T15:55:27.745153+00:00",
+      "replayed_at": "2026-08-20T15:01:09.152620+00:00",
       "tenant_id": "tenant_bright_connection_001",
       "idempotency_key": "8fd2ae101f9490c8bd473ba70c876fdb",
       "entity_type": "outstanding",
@@ -875,7 +875,7 @@
       "integrity_hash": "f3d5be12051639ef8869350e60c51691bd96daea44ae3b35cf6f54a63bee3432"
     },
     {
-      "replayed_at": "2026-08-12T15:55:27.745165+00:00",
+      "replayed_at": "2026-08-20T15:01:09.152633+00:00",
       "tenant_id": "tenant_bright_connection_001",
       "idempotency_key": "292a0ca450d6cdffe9e7175614f82048",
       "entity_type": "visit",
@@ -883,7 +883,7 @@
       "integrity_hash": "10c57c79dfcca5daede5a38cee805134de84f665451c8facdb842342ab86ac7e"
     },
     {
-      "replayed_at": "2026-08-12T15:55:27.745179+00:00",
+      "replayed_at": "2026-08-20T15:01:09.152650+00:00",
       "tenant_id": "tenant_bright_connection_001",
       "idempotency_key": "be6be74f4068292c38e96fad10aad29d",
       "entity_type": "beat_plan",
@@ -891,7 +891,7 @@
       "integrity_hash": "fb7ab6240a9e1dcfb0e983d84cc12df1f9f145fd6fc965d928a764ca1b78b36b"
     },
     {
-      "replayed_at": "2026-08-12T15:55:27.745190+00:00",
+      "replayed_at": "2026-08-20T15:01:09.152662+00:00",
       "tenant_id": "tenant_bright_connection_001",
       "idempotency_key": "7be3a793a8bea15f5ffc53acfbaf8196",
       "entity_type": "route_plan",
@@ -899,7 +899,7 @@
       "integrity_hash": "ab600798dbfcad824390c0e268d22f94df73e008d4bcff75a830d86486b8f527"
     },
     {
-      "replayed_at": "2026-08-12T15:55:27.745200+00:00",
+      "replayed_at": "2026-08-20T15:01:09.152674+00:00",
       "tenant_id": "tenant_bright_connection_001",
       "idempotency_key": "fd855af9bb868a610a7ea84520b09356",
       "entity_type": "display_compliance",
@@ -907,7 +907,7 @@
       "integrity_hash": "ee771cff339ee8e92f0ad4d2a951003e97d561ec4365df3b82ce92fb9dc1709e"
     },
     {
-      "replayed_at": "2026-08-12T15:55:27.745210+00:00",
+      "replayed_at": "2026-08-20T15:01:09.152685+00:00",
       "tenant_id": "tenant_bright_connection_001",
       "idempotency_key": "72f82990e7adb901eb2bbd85aa2f19b5",
       "entity_type": "dealer",
@@ -915,7 +915,7 @@
       "integrity_hash": "e28293874d8aae67ec33d14cc7f9d968061ce5bb37dfcf1f1bb4e800512ea906"
     },
     {
-      "replayed_at": "2026-08-12T15:55:27.745227+00:00",
+      "replayed_at": "2026-08-20T15:01:09.152704+00:00",
       "tenant_id": "tenant_bright_connection_001",
       "idempotency_key": "5b21f5c29977232416ebf322c5d8c28d",
       "entity_type": "scheme",
@@ -923,7 +923,7 @@
       "integrity_hash": "fe2a47587dd2bc39a91c2a99aef1441bbf1cbbb089ff94555f5b7e3e2e32d5b3"
     },
     {
-      "replayed_at": "2026-08-12T15:55:27.745237+00:00",
+      "replayed_at": "2026-08-20T15:01:09.152715+00:00",
       "tenant_id": "tenant_bright_connection_001",
       "idempotency_key": "705de6a577a194dd33de44fe7c031a7a",
       "entity_type": "product_catalogue",
@@ -931,7 +931,7 @@
       "integrity_hash": "850da1a2dc9fc6d796af2bed0591327837c6369e4d667856c50437499196eea0"
     },
     {
-      "replayed_at": "2026-08-12T15:55:27.745248+00:00",
+      "replayed_at": "2026-08-20T15:01:09.152728+00:00",
       "tenant_id": "tenant_bright_connection_001",
       "idempotency_key": "e9fc42f4a79fa50186535bccec1086cd",
       "entity_type": "inventory",
@@ -939,7 +939,7 @@
       "integrity_hash": "15c44c89b809a6b2b1169f196abb7463370a8a3e586816f3616cff1f330e0f36"
     },
     {
-      "replayed_at": "2026-08-12T15:55:27.745258+00:00",
+      "replayed_at": "2026-08-20T15:01:09.152739+00:00",
       "tenant_id": "tenant_bright_connection_001",
       "idempotency_key": "1f603d0db4208b5cf30d96eebec11fdb",
       "entity_type": "damaged_goods",
@@ -947,7 +947,7 @@
       "integrity_hash": "57f328d4ec0cdad14e1699194a0fef4ed6923b693510a35028cba70338c2cadd"
     },
     {
-      "replayed_at": "2026-08-12T15:55:27.745267+00:00",
+      "replayed_at": "2026-08-20T15:01:09.152750+00:00",
       "tenant_id": "tenant_bright_connection_001",
       "idempotency_key": "1beb33160a1651089a83df213f12b7f4",
       "entity_type": "order",
@@ -955,7 +955,7 @@
       "integrity_hash": "586a685db047f911f6651981a94b7386401493337dc4b402c6b2379db1aa1b6c"
     },
     {
-      "replayed_at": "2026-08-12T15:55:27.745278+00:00",
+      "replayed_at": "2026-08-20T15:01:09.152809+00:00",
       "tenant_id": "tenant_bright_connection_001",
       "idempotency_key": "156aedcfe6699ca3e37f3f3e307f4dd9",
       "entity_type": "invoice",
@@ -963,7 +963,7 @@
       "integrity_hash": "ca734a014a6f42a032e4393be27ba45cafb35ac9fa87cb8d62cd5b7698cb554e"
     },
     {
-      "replayed_at": "2026-08-12T15:55:27.745288+00:00",
+      "replayed_at": "2026-08-20T15:01:09.152820+00:00",
       "tenant_id": "tenant_bright_connection_001",
       "idempotency_key": "e763d58dcd048245623dbbca88c090ec",
       "entity_type": "payment_receipt",
@@ -971,7 +971,7 @@
       "integrity_hash": "e43ac20b46dff357eb93dda0bd2c9a10a2f22759470f52a67bb8669fab8db0fd"
     },
     {
-      "replayed_at": "2026-08-12T15:55:27.745296+00:00",
+      "replayed_at": "2026-08-20T15:01:09.152831+00:00",
       "tenant_id": "tenant_bright_connection_001",
       "idempotency_key": "783d62c9a73753c2c71a6f77b51e752d",
       "entity_type": "order",
@@ -979,7 +979,7 @@
       "integrity_hash": "64bd7f9f92783927643350f70866123c476b9cea0eed9c1a715f9dc29121d9d2"
     },
     {
-      "replayed_at": "2026-08-12T15:55:27.745307+00:00",
+      "replayed_at": "2026-08-20T15:01:09.152843+00:00",
       "tenant_id": "tenant_bright_connection_001",
       "idempotency_key": "c5a8e18b4f8e68ec642b1501215a1b5e",
       "entity_type": "collection",
@@ -987,7 +987,7 @@
       "integrity_hash": "f11de509947592d3571877fa1fd63631277a5bb45eca78b355b1783a4ad840ba"
     },
     {
-      "replayed_at": "2026-08-12T15:55:27.745318+00:00",
+      "replayed_at": "2026-08-20T15:01:09.152856+00:00",
       "tenant_id": "tenant_bright_connection_001",
       "idempotency_key": "53c1185a1d8e303ef0126a024b2beb4a",
       "entity_type": "outstanding",
@@ -995,7 +995,7 @@
       "integrity_hash": "1db649d94d706ad755a8e96ba68a21261ffd92de5baccdf9871bfeb3db5a4f4a"
     },
     {
-      "replayed_at": "2026-08-12T15:55:27.745327+00:00",
+      "replayed_at": "2026-08-20T15:01:09.152866+00:00",
       "tenant_id": "tenant_bright_connection_001",
       "idempotency_key": "603b6c2d4f4e3a2498719fe7d87e9c9a",
       "entity_type": "dealer",
@@ -1003,7 +1003,7 @@
       "integrity_hash": "47f413bc38da1d21e67153c1e6d5615c323ee3d569f43c62a18f9ae81707b3af"
     },
     {
-      "replayed_at": "2026-08-12T15:55:27.745361+00:00",
+      "replayed_at": "2026-08-20T15:01:09.152904+00:00",
       "tenant_id": "tenant_bright_connection_001",
       "idempotency_key": "fca781fac9e35ea3fd8f697b49db870f",
       "entity_type": "order",
@@ -1015,7 +1015,7 @@
     "certified": true,
     "checks_passed": 45,
     "checks_total": 45,
-    "completed_at": "2026-08-12T15:55:27.747701+00:00",
+    "completed_at": "2026-08-20T15:01:09.156091+00:00",
     "verdict": "CERTIFIED"
   }
 }
